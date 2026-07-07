@@ -23,8 +23,8 @@
 
 <header class="header">
     <nav class="nav">
-        <a href="#" class="logo">
-            <img src="actifs/Logo.png" alt="ED BIM Studio">
+        <a href="#home" class="logo">
+            <span class="brandMark" aria-hidden="true">ED</span>
             <span>ED BIM Studio</span>
         </a>
         <ul class="menu">
@@ -58,7 +58,7 @@
 <main>
 
 <!-- HERO -->
-<section class="hero">
+<section id="home" class="hero">
     <div class="mesh mesh1"></div>
     <div class="mesh mesh2"></div>
     <div class="mesh mesh3"></div>
@@ -74,7 +74,7 @@
             </p>
             <div class="heroButtons">
                 <a href="#solution" class="primaryButton">Découvrir ED BIM Starter</a>
-                <a href="actifs/CV.pdf" target="_blank" class="secondaryButton">Télécharger le CV</a>
+                <a href="Actifs/CV.pdf" class="secondaryButton">Ouvrir le CV</a>
             </div>
             <div class="heroStats">
                 <div class="stat"><span>20+</span><small>Années d'expérience</small></div>
@@ -89,7 +89,7 @@
             <div class="floatingCard right"><span class="cardTitle">Convention</span><strong>Standard BIM</strong></div>
             <div class="floatingCard left"><span class="cardTitle">QA BIM</span><strong>Validation</strong></div>
             <div class="portrait">
-                <img src="actifs/Photo.png" alt="Elodie Derbeque">
+                <img src="Actifs/Photo.png" alt="Elodie Derbeque">
             </div>
         </div>
     </div>
@@ -148,7 +148,7 @@
             <div class="windowContent">
                 <aside class="windowSidebar">
                     <div class="sidebarLogo">
-                        <img src="actifs/Logo.png" alt="ED BIM Starter">
+                        <img src="Actifs/plugin.png" alt="ED BIM Starter">
                     </div>
                     <ul>
                         <li class="active" data-tab="dashboard">Tableau de bord</li>
@@ -163,68 +163,54 @@
 
                 <div class="pluginPreview">
                     <div class="tabContent active" data-tab="dashboard">
-                        <img src="actifs/plugin.png" alt="ED BIM Starter">
+                        <img src="Actifs/plugin.png" alt="ED BIM Starter">
                     </div>
                     <div class="tabContent" data-tab="init">
-                        <img class="tabCapture" src="actifs/capture-initialisation.png" alt="Initialisation automatique">
+                        <img class="tabCapture" src="Actifs/capture-initialisation.png" alt="Initialisation automatique">
                         <div class="tabCard">
                             <span class="tabBadge">G6 · INIT PROJET</span>
                             <h4>Initialisation automatique</h4>
                             <p>Création immédiate de la structure du projet : gabarit, vues, feuilles et nomenclatures de base.</p>
                         </div>
                     </div>
-                   <div class="pluginPreview">
-    <div class="tabContent active" data-tab="dashboard">
-        <img src="actifs/plugin.png" alt="ED BIM Starter">
-    </div>
-    <div class="tabContent" data-tab="init">
-        <img class="tabCapture" src="actifs/capture-initialisation.png" alt="Initialisation automatique">
-        <div class="tabCard">
-            <span class="tabBadge">G6 · INIT PROJET</span>
-            <h4>Initialisation automatique</h4>
-            <p>Création immédiate de la structure du projet.</p>
-        </div>
-    </div>
-    <div class="tabContent" data-tab="arbo">
-        <img class="tabCapture" src="actifs/capture-arborescence.png" alt="Arborescence">
-        <div class="tabCard">
-            <span class="tabBadge">G1 · G5</span>
-            <h4>Arborescence normalisée</h4>
-            <p>Conservation ou restauration automatique.</p>
-        </div>
-    </div>
-    <div class="tabContent" data-tab="convention">
-        <img class="tabCapture" src="actifs/capture-convention.png" alt="Convention">
-        <div class="tabCard">
-            <span class="tabBadge">ED_*</span>
-            <h4>Convention de nommage BIM</h4>
-            <p>Paramètres partagés pour un nommage cohérent.</p>
-        </div>
-    </div>
-    <div class="tabContent" data-tab="cartouches">
-        <img class="tabCapture" src="actifs/capture-ruban.png" alt="Cartouches">
-        <div class="tabCard">
-            <span class="tabBadge">G2 · AUTO</span>
-            <h4>Cartouches intelligents</h4>
-            <p>Auto-nommage et dépersonnalisation.</p>
-        </div>
-    </div>
-    <div class="tabContent" data-tab="qa">
-        <div class="tabCard">
-            <span class="tabBadge">CONTROL · EXPORT</span>
-            <h4>Contrôle qualité BIM</h4>
-            <p>Système de score avant export.</p>
-        </div>
-    </div>
-    <div class="tabContent" data-tab="params">
-        <img class="tabCapture" src="actifs/capture-parametres.png" alt="Paramètres">
-        <div class="tabCard">
-            <span class="tabBadge">G3 · G4</span>
-            <h4>Paramètres & standardisation</h4>
-            <p>Déploiement des réglages ED.</p>
-        </div>
-    </div>
-</div>
+                    <div class="tabContent" data-tab="arbo">
+                        <img class="tabCapture" src="Actifs/capture-arborescence.png" alt="Arborescence normalisée">
+                        <div class="tabCard">
+                            <span class="tabBadge">G1 · G5</span>
+                            <h4>Arborescence normalisée</h4>
+                            <p>Conservation ou restauration automatique de l'arborescence de vues.</p>
+                        </div>
+                    </div>
+                    <div class="tabContent" data-tab="convention">
+                        <img class="tabCapture" src="Actifs/capture-convention.png" alt="Convention de nommage">
+                        <div class="tabCard">
+                            <span class="tabBadge">ED_*</span>
+                            <h4>Convention de nommage BIM</h4>
+                            <p>Paramètres partagés pour un nommage cohérent.</p>
+                        </div>
+                    </div>
+                    <div class="tabContent" data-tab="cartouches">
+                        <img class="tabCapture" src="Actifs/capture-ruban.png" alt="Cartouches intelligents">
+                        <div class="tabCard">
+                            <span class="tabBadge">G2 · AUTO</span>
+                            <h4>Cartouches intelligents</h4>
+                            <p>Auto-nommage et dépersonnalisation bureau appliqués automatiquement.</p>
+                        </div>
+                    </div>
+                    <div class="tabContent" data-tab="qa">
+                        <div class="tabCard">
+                            <span class="tabBadge">CONTROL · EXPORT</span>
+                            <h4>Contrôle qualité BIM</h4>
+                            <p>Système de score avant export.</p>
+                        </div>
+                    </div>
+                    <div class="tabContent" data-tab="params">
+                        <img class="tabCapture" src="Actifs/capture-parametres.png" alt="Paramètres">
+                        <div class="tabCard">
+                            <span class="tabBadge">G3 · G4</span>
+                            <h4>Paramètres & standardisation</h4>
+                            <p>Déploiement des réglages ED sur un nouveau projet en un clic.</p>
+                        </div>
                     </div>
                 </div>
 
@@ -259,27 +245,27 @@
         </div>
         <div class="workflowLine">
             <div class="workflowItem">
-                <div class="workflowIcon"><img src="actifs/workflow-01-revit.png" alt="Projet Revit"></div>
+                <div class="workflowIcon"><img src="Actifs/workflow-01-revit.png" alt="Projet Revit"></div>
                 <h3>Projet Revit</h3>
             </div>
             <div class="workflowArrow"></div>
             <div class="workflowItem">
-                <div class="workflowIcon"><img src="actifs/workflow-02-analyse.png" alt="Analyse"></div>
+                <div class="workflowIcon"><img src="Actifs/workflow-02-analyse.png" alt="Analyse"></div>
                 <h3>Analyse</h3>
             </div>
             <div class="workflowArrow"></div>
             <div class="workflowItem">
-                <div class="workflowIcon"><img src="actifs/workflow-03-edbimstarter.png" alt="ED BIM Starter"></div>
+                <div class="workflowIcon"><img src="Actifs/workflow-03-edbimstarter.png" alt="ED BIM Starter"></div>
                 <h3>ED BIM Starter</h3>
             </div>
             <div class="workflowArrow"></div>
             <div class="workflowItem">
-                <div class="workflowIcon"><img src="actifs/workflow-04-creation.png" alt="Création automatique"></div>
+                <div class="workflowIcon"><img src="Actifs/workflow-04-creation.png" alt="Création automatique"></div>
                 <h3>Création automatique</h3>
             </div>
             <div class="workflowArrow"></div>
             <div class="workflowItem">
-                <div class="workflowIcon"><img src="actifs/workflow-05-pret.png" alt="Projet BIM prêt"></div>
+                <div class="workflowIcon"><img src="Actifs/workflow-05-pret.png" alt="Projet BIM prêt"></div>
                 <h3>Projet BIM prêt</h3>
             </div>
         </div>
@@ -326,12 +312,12 @@
                 <div class="finderTop"><span>Curriculum Vitae</span></div>
                 <div class="finderBody">
                     <div class="pdfIcon">
-                        <img class="fileCover" src="actifs/logo-cv.png" alt="CV">
+                        <img class="fileCover" src="Actifs/logo-cv.png" alt="CV">
                         <span class="fileLabel">PDF</span>
                     </div>
                     <h3>CV</h3>
                     <p>Mon parcours, mes compétences et ma spécialisation BIM.</p>
-                    <a href="actifs/CV.pdf" target="_blank" class="finderButton">Ouvrir le PDF</a>
+                    <a href="Actifs/CV.pdf" class="finderButton">Ouvrir le PDF</a>
                 </div>
             </article>
 
@@ -340,12 +326,12 @@
                 <div class="finderTop"><span>Travail de Fin d'Études</span></div>
                 <div class="finderBody">
                     <div class="pdfIcon">
-                        <img class="fileCover" src="actifs/icone-tfe.png" alt="TFE">
+                        <img class="fileCover" src="Actifs/icone-tfe.png" alt="TFE">
                         <span class="fileLabel">PDF</span>
                     </div>
                     <h3>TFE</h3>
                     <p>Recherche et développement d'ED BIM Starter.</p>
-                    <a href="actifs/TFE.pdf" target="_blank" class="finderButton">Consulter</a>
+                    <a href="Actifs/TFE.pdf" class="finderButton">Consulter</a>
                 </div>
             </article>
 
@@ -354,12 +340,12 @@
                 <div class="finderTop"><span>ED BIM Starter</span></div>
                 <div class="finderBody">
                     <div class="pdfIcon exeIcon">
-                        <img class="fileCover" src="actifs/logo-bim-starter-full.png" alt="ED BIM Starter">
-                        <span class="fileLabel">EXE</span>
+                        <img class="fileCover" src="Actifs/plugin.png" alt="ED BIM Starter">
+                        <span class="fileLabel">ZIP</span>
                     </div>
                     <h3>Installateur</h3>
-                    <p>Installe le plugin ED BIM Starter sur Revit.</p>
-                    <a href="actifs/ED_BIM_Starter_Installation.exe" download class="finderButton">Télécharger le .exe</a>
+                    <p>Télécharge l'archive d'installation du plugin ED BIM Starter.</p>
+                    <a href="Actifs/ED_BIM_Starter_Installation.zip" class="finderButton">Télécharger le .zip</a>
                 </div>
             </article>
         </div>
@@ -382,7 +368,7 @@
 <footer class="footer">
     <div class="footerContainer">
         <div class="footerBrand">
-            <img src="actifs/Logo.png" alt="ED BIM Studio">
+            <span class="brandMark footerBrandMark" aria-hidden="true">ED</span>
             <div>
                 <strong>ED BIM Studio</strong>
                 <span>Modeleur BIM · Revit API Developer</span>

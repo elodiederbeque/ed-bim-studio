@@ -31,6 +31,12 @@ let scrollYPos = 0;
 let mouseX = window.innerWidth / 2;
 let mouseY = window.innerHeight / 2;
 
+function isCompactViewport(){
+
+    return window.innerWidth < 900;
+
+}
+
 
 /*==================================================
  CURSOR GLOW
@@ -150,6 +156,21 @@ backToTop.addEventListener("click",()=>{
 ==================================================*/
 
 function heroParallax(){
+
+    if(isCompactViewport()){
+
+        if(heroVisual) heroVisual.style.transform="";
+        if(heroContent) heroContent.style.transform="";
+
+        meshes.forEach(mesh=>{
+
+            mesh.style.transform="";
+
+        });
+
+        return;
+
+    }
 
     const value=window.scrollY*0.18;
 
@@ -529,6 +550,15 @@ let currentY = 0;
 
 window.addEventListener("mousemove",(e)=>{
 
+    if(isCompactViewport()){
+
+        targetX=0;
+        targetY=0;
+
+        return;
+
+    }
+
     targetX = (e.clientX / window.innerWidth - .5) * 30;
     targetY = (e.clientY / window.innerHeight - .5) * 30;
 
@@ -540,6 +570,21 @@ window.addEventListener("mousemove",(e)=>{
 ==================================================*/
 
 function animateHero(){
+
+    if(isCompactViewport()){
+
+        currentX=0;
+        currentY=0;
+
+        if(heroVisual) heroVisual.style.transform="";
+        if(heroContent) heroContent.style.transform="";
+        if(halo) halo.style.transform="translateY(-50%)";
+
+        requestAnimationFrame(animateHero);
+
+        return;
+
+    }
 
     currentX += (targetX-currentX)*0.08;
     currentY += (targetY-currentY)*0.08;
@@ -653,6 +698,8 @@ floatingCards.forEach((card,index)=>{
 if(hero){
 
 hero.addEventListener("mousemove",(e)=>{
+
+    if(isCompactViewport()) return;
 
     const x=e.clientX/window.innerWidth-.5;
 
@@ -945,11 +992,11 @@ document.querySelectorAll(
  IMAGE PRELOAD
 ==================================================*/
 
-["assets/Photo.png",
+["Actifs/Photo.png",
 
- "assets/plugin.png",
+ "Actifs/plugin.png",
 
- "assets/Logo.png"]
+ "Actifs/logo-cv.png"]
 
 .forEach(src=>{
 

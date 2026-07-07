@@ -292,6 +292,38 @@ section{
 
 }
 
+.brandMark{
+
+    width:42px;
+    height:42px;
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex:0 0 auto;
+
+    border-radius:14px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+        135deg,
+        var(--blue-deep),
+        var(--blue));
+
+    font-weight:900;
+    font-size:.9rem;
+
+    letter-spacing:-.04em;
+
+    box-shadow:
+        0 12px 28px rgba(6,150,215,.24);
+
+}
+
 .logo img{
 
     width:42px;
@@ -530,6 +562,8 @@ section{
 
     z-index:5;
 
+    min-width:0;
+
 }
 
 .heroContent{
@@ -537,6 +571,9 @@ section{
     position:relative;
 
     z-index:10;
+
+    width:100%;
+    min-width:0;
 
 }
 
@@ -562,6 +599,10 @@ section{
 
     margin-bottom:30px;
 
+    max-width:100%;
+
+    white-space:normal;
+
 }
 
 .hero h1{
@@ -576,6 +617,10 @@ section{
 
     max-width:760px;
 
+    width:100%;
+
+    overflow-wrap:break-word;
+
 }
 
 .heroLead{
@@ -583,6 +628,8 @@ section{
     margin:38px 0;
 
     max-width:620px;
+
+    width:100%;
 
     font-size:1.25rem;
 
@@ -2367,9 +2414,11 @@ body.dark .cartoucheRow{
 
 }
 
-.footerBrand img{
+.footerBrandMark{
 
     width:54px;
+    height:54px;
+    border-radius:16px;
 
 }
 
@@ -2473,7 +2522,7 @@ body.dark .cartoucheRow{
 
 .heroGrid{
 
-    grid-template-columns:1fr;
+    grid-template-columns:minmax(0,1fr);
 
     gap:80px;
 
