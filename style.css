@@ -85,6 +85,36 @@ body{
 
 }
 
+body.performanceMode #cursorGlow{
+
+    display:none;
+
+}
+
+body.performanceMode .mesh,
+body.performanceMode .heroHalo,
+body.performanceMode .scrollIndicator span{
+
+    animation:none !important;
+
+}
+
+body.performanceMode .hero,
+body.performanceMode .heroVisual,
+body.performanceMode .heroContent{
+
+    transform:none !important;
+
+}
+
+body.performanceMode .nav,
+body.performanceMode .mobileMenu{
+
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none;
+
+}
+
 
 /*==================================================
  GLOBAL
