@@ -26,6 +26,10 @@ const sections = document.querySelectorAll("section");
 
 const menuLinks = document.querySelectorAll(".menu a");
 
+const ENABLE_HEAVY_MOTION = false;
+
+document.body.classList.add("performanceMode");
+
 let scrollYPos = 0;
 
 let mouseX = window.innerWidth / 2;
@@ -42,24 +46,34 @@ function isCompactViewport(){
  CURSOR GLOW
 ==================================================*/
 
-document.addEventListener("mousemove",(e)=>{
+if(ENABLE_HEAVY_MOTION && cursorGlow){
 
-    mouseX=e.clientX;
+    document.addEventListener("mousemove",(e)=>{
 
-    mouseY=e.clientY;
+        mouseX=e.clientX;
 
-});
+        mouseY=e.clientY;
 
-function updateCursor(){
+    });
 
-    cursorGlow.style.transform=
-        `translate(${mouseX}px,${mouseY}px) translate(-50%,-50%)`;
+    function updateCursor(){
 
-    requestAnimationFrame(updateCursor);
+        cursorGlow.style.transform=
+            `translate(${mouseX}px,${mouseY}px) translate(-50%,-50%)`;
+
+        requestAnimationFrame(updateCursor);
+
+    }
+
+    updateCursor();
 
 }
 
-updateCursor();
+else if(cursorGlow){
+
+    cursorGlow.remove();
+
+}
 
 
 /*==================================================
@@ -111,8 +125,6 @@ function updateHeader(){
 
 updateHeader();
 
-window.addEventListener("scroll",updateHeader);
-
 
 /*==================================================
  BACK TO TOP
@@ -136,8 +148,6 @@ function updateBackButton(){
 
 updateBackButton();
 
-window.addEventListener("scroll",updateBackButton);
-
 backToTop.addEventListener("click",()=>{
 
     window.scrollTo({
@@ -157,52 +167,16 @@ backToTop.addEventListener("click",()=>{
 
 function heroParallax(){
 
-    if(isCompactViewport()){
-
-        if(heroVisual) heroVisual.style.transform="";
-        if(heroContent) heroContent.style.transform="";
-
-        meshes.forEach(mesh=>{
-
-            mesh.style.transform="";
-
-        });
-
-        return;
-
-    }
-
-    const value=window.scrollY*0.18;
-
-    if(heroVisual){
-
-        heroVisual.style.transform=
-
-        `translateY(${value}px)`;
-
-    }
-
-    if(heroContent){
-
-        heroContent.style.transform=
-
-        `translateY(${value*.25}px)`;
-
-    }
+    if(heroVisual) heroVisual.style.transform="";
+    if(heroContent) heroContent.style.transform="";
 
     meshes.forEach((mesh,index)=>{
 
-        const speed=(index+1)*12;
-
-        mesh.style.transform=
-
-        `translateY(${value/speed}px)`;
+        mesh.style.transform="";
 
     });
 
 }
-
-window.addEventListener("scroll",heroParallax);
 
 heroParallax();
 
@@ -210,6 +184,8 @@ heroParallax();
 /*==================================================
  FLOATING CARDS
 ==================================================*/
+
+if(ENABLE_HEAVY_MOTION){
 
 floatingCards.forEach((card,index)=>{
 
@@ -228,6 +204,8 @@ floatingCards.forEach((card,index)=>{
     });
 
 });
+
+}
 
 
 /*==================================================
@@ -548,21 +526,25 @@ let currentY = 0;
  MOUSE TRACKING
 ==================================================*/
 
-window.addEventListener("mousemove",(e)=>{
+if(ENABLE_HEAVY_MOTION){
 
-    if(isCompactViewport()){
+    window.addEventListener("mousemove",(e)=>{
 
-        targetX=0;
-        targetY=0;
+        if(isCompactViewport()){
 
-        return;
+            targetX=0;
+            targetY=0;
 
-    }
+            return;
 
-    targetX = (e.clientX / window.innerWidth - .5) * 30;
-    targetY = (e.clientY / window.innerHeight - .5) * 30;
+        }
 
-});
+        targetX = (e.clientX / window.innerWidth - .5) * 30;
+        targetY = (e.clientY / window.innerHeight - .5) * 30;
+
+    });
+
+}
 
 
 /*==================================================
@@ -571,7 +553,7 @@ window.addEventListener("mousemove",(e)=>{
 
 function animateHero(){
 
-    if(isCompactViewport()){
+    if(!ENABLE_HEAVY_MOTION || isCompactViewport()){
 
         currentX=0;
         currentY=0;
@@ -579,8 +561,6 @@ function animateHero(){
         if(heroVisual) heroVisual.style.transform="";
         if(heroContent) heroContent.style.transform="";
         if(halo) halo.style.transform="translateY(-50%)";
-
-        requestAnimationFrame(animateHero);
 
         return;
 
@@ -670,6 +650,8 @@ document.querySelectorAll(
  FLOATING CARDS
 ==================================================*/
 
+if(ENABLE_HEAVY_MOTION){
+
 floatingCards.forEach((card,index)=>{
 
     let angle=index*20;
@@ -689,6 +671,8 @@ floatingCards.forEach((card,index)=>{
     animate();
 
 });
+
+}
 
 
 /*==================================================
@@ -755,11 +739,9 @@ function render(){
 
     // réservé aux futures animations
 
-    requestAnimationFrame(render);
 
 }
 
-render();
 
 
 /*==================================================
@@ -770,6 +752,8 @@ render();
 ==================================================*/
 
 let previousScroll = 0;
+
+if(ENABLE_HEAVY_MOTION){
 
 window.addEventListener("scroll",()=>{
 
@@ -790,6 +774,8 @@ window.addEventListener("scroll",()=>{
     previousScroll = current;
 
 },{passive:true});
+
+}
 
 
 /*==================================================
