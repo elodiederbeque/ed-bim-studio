@@ -2294,6 +2294,126 @@ section{
 }
 
 /*==================================================
+ OBJECTIVE
+==================================================*/
+
+.objective{
+
+    padding:150px 0;
+
+    background:
+        linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #f5fbff 100%);
+
+}
+
+.objectiveContainer{
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(0, .95fr)
+        minmax(0, 1.3fr);
+
+    gap:70px;
+
+    align-items:start;
+
+}
+
+.objective .sectionHeader{
+
+    margin-bottom:0;
+
+}
+
+.objectiveGrid{
+
+    display:grid;
+
+    gap:22px;
+
+}
+
+.objectiveCard{
+
+    position:relative;
+
+    padding:34px;
+
+    border-radius:var(--radius-small);
+
+    background:
+        rgba(255,255,255,.84);
+
+    border:1px solid rgba(6,150,215,.12);
+
+    box-shadow:
+        0 24px 70px rgba(15,23,42,.07);
+
+}
+
+.objectiveCard::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:22px auto 22px 0;
+
+    width:4px;
+
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+        180deg,
+        var(--blue),
+        var(--blue-light));
+
+}
+
+.objectiveLabel{
+
+    display:block;
+
+    margin-bottom:14px;
+
+    font-family:var(--mono);
+
+    font-size:.76rem;
+
+    font-weight:800;
+
+    letter-spacing:.16em;
+
+    text-transform:uppercase;
+
+    color:var(--blue);
+
+}
+
+.objectiveCard h3{
+
+    font-size:1.2rem;
+
+    line-height:1.35;
+
+    margin-bottom:14px;
+
+}
+
+.objectiveCard p{
+
+    color:var(--text-light);
+
+    line-height:1.75;
+
+}
+
+/*==================================================
  CONTACT
 ==================================================*/
 
@@ -2691,6 +2811,14 @@ body.dark .cartoucheRow{
 .finderGrid{
 
     grid-template-columns:1fr;
+
+}
+
+.objectiveContainer{
+
+    grid-template-columns:1fr;
+
+    gap:45px;
 
 }
 
@@ -3109,6 +3237,18 @@ section{
 
 }
 
+.objective{
+
+    padding:120px 0;
+
+}
+
+.objectiveCard{
+
+    padding:30px;
+
+}
+
 .finderBody{
 
     padding:40px 30px;
@@ -3173,6 +3313,12 @@ section{
 .contactButtons a{
 
     width:100%;
+
+}
+
+.objectiveCard{
+
+    padding:26px 24px;
 
 }
 
