@@ -4376,7 +4376,59 @@ body.dark{
 
 body.dark .header .nav{
 
-    background:rgba(15,23,42,.72);
+    background:rgba(15,23,42,.9);
+
+    border-color:rgba(255,255,255,.1);
+
+}
+
+body.dark .logo,
+body.dark .menu a{
+
+    color:#F8FAFC;
+
+}
+
+body.dark .menu a:hover{
+
+    color:#7DD3FC;
+
+}
+
+body.dark .brandMark{
+
+    color:white;
+
+}
+
+body.dark .sectionEyebrow,
+body.dark .eyebrow{
+
+    background:rgba(6,150,215,.18);
+
+    color:#7DD3FC;
+
+}
+
+body.dark .hero{
+
+    background:
+        linear-gradient(
+        180deg,
+        rgba(15,23,42,.96),
+        rgba(17,24,39,.98)),
+        repeating-linear-gradient(
+        0deg,
+        rgba(125,211,252,.08) 0px,
+        rgba(125,211,252,.08) 1px,
+        transparent 1px,
+        transparent 88px),
+        repeating-linear-gradient(
+        90deg,
+        rgba(125,211,252,.08) 0px,
+        rgba(125,211,252,.08) 1px,
+        transparent 1px,
+        transparent 88px);
 
 }
 
@@ -4417,6 +4469,14 @@ body.dark .problem{
 
 }
 
+body.dark .why,
+body.dark .technology,
+body.dark .contact{
+
+    background:#111827;
+
+}
+
 body.dark .solution{
 
     background:#111827;
@@ -4438,6 +4498,53 @@ body.dark .timeline{
 body.dark .documents{
 
     background:#0F172A;
+
+}
+
+body.dark .objective{
+
+    background:
+        linear-gradient(
+        180deg,
+        #0F172A 0%,
+        #111827 100%);
+
+}
+
+body.dark .objectiveCard{
+
+    background:rgba(30,41,59,.78);
+
+    border-color:rgba(125,211,252,.18);
+
+    box-shadow:
+        0 28px 80px rgba(0,0,0,.24);
+
+}
+
+body.dark .objectiveLabel{
+
+    color:#7DD3FC;
+
+}
+
+body.dark .objective .sectionHeader p,
+body.dark .objectiveCard p,
+body.dark .heroLead,
+body.dark .whyText,
+body.dark .contact p{
+
+    color:#CBD5E1;
+
+}
+
+body.dark .secondaryButton{
+
+    background:rgba(30,41,59,.85);
+
+    border-color:rgba(255,255,255,.12);
+
+    color:#F8FAFC;
 
 }
 
