@@ -596,6 +596,30 @@ section{
 
 }
 
+.heroGrid::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-46px -38px;
+
+    border:1px solid rgba(6,150,215,.14);
+
+    border-radius:8px;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(90deg, rgba(6,150,215,.28) 0 68px, transparent 68px) left top / 100% 1px no-repeat,
+        linear-gradient(90deg, rgba(6,150,215,.28) 0 68px, transparent 68px) left bottom / 100% 1px no-repeat,
+        linear-gradient(180deg, rgba(6,150,215,.28) 0 68px, transparent 68px) left top / 1px 100% no-repeat,
+        linear-gradient(180deg, rgba(6,150,215,.28) 0 68px, transparent 68px) right top / 1px 100% no-repeat;
+
+    opacity:.8;
+
+}
+
 .heroContent{
 
     position:relative;
@@ -604,6 +628,30 @@ section{
 
     width:100%;
     min-width:0;
+
+}
+
+.heroContent::before{
+
+    content:"A-01 / RECONVERSION BIM";
+
+    position:absolute;
+
+    top:-58px;
+
+    left:0;
+
+    font-family:var(--mono);
+
+    font-size:.68rem;
+
+    font-weight:700;
+
+    letter-spacing:.18em;
+
+    color:rgba(6,150,215,.72);
+
+    text-transform:uppercase;
 
 }
 
@@ -666,6 +714,48 @@ section{
     color:var(--text-light);
 
     line-height:1.8;
+
+}
+
+.heroPositioning{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin:-14px 0 34px;
+
+}
+
+.heroPositioning span{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    min-height:36px;
+
+    padding:8px 12px;
+
+    border:1px solid rgba(6,150,215,.22);
+
+    border-radius:6px;
+
+    background:rgba(255,255,255,.48);
+
+    color:var(--blue-deep);
+
+    font-family:var(--mono);
+
+    font-size:.72rem;
+
+    font-weight:800;
+
+    letter-spacing:.08em;
+
+    text-transform:uppercase;
 
 }
 
@@ -792,6 +882,38 @@ section{
 
 }
 
+.portrait::after{
+
+    content:"ELV. BIM / REVIT";
+
+    position:absolute;
+
+    right:-8px;
+
+    bottom:18px;
+
+    z-index:8;
+
+    padding:8px 10px;
+
+    background:rgba(255,255,255,.82);
+
+    border:1px solid rgba(6,150,215,.2);
+
+    color:var(--blue-deep);
+
+    font-family:var(--mono);
+
+    font-size:.66rem;
+
+    font-weight:800;
+
+    letter-spacing:.16em;
+
+    text-transform:uppercase;
+
+}
+
 .portrait::before{
 
     content:"";
@@ -841,7 +963,7 @@ section{
 
     padding:22px;
 
-    border-radius:26px;
+    border-radius:8px;
 
     backdrop-filter:blur(18px);
 
@@ -858,6 +980,24 @@ section{
     transition:.45s;
 
     z-index:20;
+
+}
+
+.floatingCard::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    bottom:0;
+
+    width:4px;
+
+    background:linear-gradient(180deg,var(--blue),var(--blue-light));
 
 }
 
@@ -956,7 +1096,7 @@ section{
 
     padding:24px;
 
-    border-radius:22px;
+    border-radius:8px;
 
     background:
 
@@ -969,6 +1109,24 @@ section{
     box-shadow:
 
         0 18px 40px rgba(15,23,42,.06);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.stat::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0 0 auto;
+
+    height:3px;
+
+    background:linear-gradient(90deg,var(--blue),rgba(6,150,215,0));
 
 }
 
@@ -2302,10 +2460,14 @@ section{
     padding:150px 0;
 
     background:
+        linear-gradient(90deg, rgba(6,150,215,.05) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(6,150,215,.05) 1px, transparent 1px),
         linear-gradient(
         180deg,
         #ffffff 0%,
         #f5fbff 100%);
+
+    background-size:72px 72px,72px 72px,auto;
 
 }
 
@@ -2343,7 +2505,7 @@ section{
 
     padding:34px;
 
-    border-radius:var(--radius-small);
+    border-radius:8px;
 
     background:
         rgba(255,255,255,.84);
@@ -2352,6 +2514,26 @@ section{
 
     box-shadow:
         0 24px 70px rgba(15,23,42,.07);
+
+}
+
+.objectiveCard::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:20px;
+
+    top:20px;
+
+    width:34px;
+
+    height:34px;
+
+    border-top:1px solid rgba(6,150,215,.26);
+
+    border-right:1px solid rgba(6,150,215,.26);
 
 }
 
@@ -4410,6 +4592,34 @@ body.dark .eyebrow{
 
 }
 
+body.dark .heroGrid::before{
+
+    border-color:rgba(125,211,252,.16);
+
+    background:
+        linear-gradient(90deg, rgba(125,211,252,.3) 0 68px, transparent 68px) left top / 100% 1px no-repeat,
+        linear-gradient(90deg, rgba(125,211,252,.3) 0 68px, transparent 68px) left bottom / 100% 1px no-repeat,
+        linear-gradient(180deg, rgba(125,211,252,.3) 0 68px, transparent 68px) left top / 1px 100% no-repeat,
+        linear-gradient(180deg, rgba(125,211,252,.3) 0 68px, transparent 68px) right top / 1px 100% no-repeat;
+
+}
+
+body.dark .heroContent::before{
+
+    color:rgba(125,211,252,.7);
+
+}
+
+body.dark .heroPositioning span{
+
+    background:rgba(15,23,42,.55);
+
+    border-color:rgba(125,211,252,.22);
+
+    color:#BAE6FD;
+
+}
+
 body.dark .hero{
 
     background:
@@ -4469,6 +4679,16 @@ body.dark .problem{
 
 }
 
+body.dark .portrait::after{
+
+    background:rgba(15,23,42,.84);
+
+    border-color:rgba(125,211,252,.24);
+
+    color:#BAE6FD;
+
+}
+
 body.dark .why,
 body.dark .technology,
 body.dark .contact{
@@ -4504,10 +4724,14 @@ body.dark .documents{
 body.dark .objective{
 
     background:
+        linear-gradient(90deg, rgba(125,211,252,.055) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(125,211,252,.055) 1px, transparent 1px),
         linear-gradient(
         180deg,
         #0F172A 0%,
         #111827 100%);
+
+    background-size:72px 72px,72px 72px,auto;
 
 }
 
@@ -4907,6 +5131,44 @@ body.menu-open{
     .menuToggle{
 
         display:flex;
+
+    }
+
+}
+
+@media (max-width:900px){
+
+    .heroGrid::before,
+    .heroContent::before,
+    .portrait::after{
+
+        display:none;
+
+    }
+
+    .heroPositioning{
+
+        justify-content:center;
+
+    }
+
+}
+
+@media (max-width:620px){
+
+    .heroPositioning{
+
+        margin-top:-6px;
+
+    }
+
+    .heroPositioning span{
+
+        width:100%;
+
+        justify-content:center;
+
+        text-align:center;
 
     }
 
