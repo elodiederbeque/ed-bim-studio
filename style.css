@@ -865,19 +865,33 @@ section{
 
     position:absolute;
 
-    right:5vw;
+    right:2vw;
 
-    top:190px;
+    top:150px;
 
-    width:min(720px,46vw);
+    width:min(900px,54vw);
 
-    height:min(680px,68vh);
+    height:min(760px,76vh);
 
     z-index:2;
 
     pointer-events:none;
 
-    opacity:.34;
+    opacity:.58;
+
+    border:1px solid rgba(6,150,215,.12);
+
+    border-radius:10px;
+
+    background:
+        linear-gradient(90deg, rgba(6,150,215,.08) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(6,150,215,.08) 1px, transparent 1px),
+        linear-gradient(135deg, transparent 0 61%, rgba(6,150,215,.13) 61% 61.2%, transparent 61.2%),
+        linear-gradient(45deg, transparent 0 23%, rgba(6,150,215,.1) 23% 23.18%, transparent 23.18%);
+
+    background-size:42px 42px, 42px 42px, 100% 100%, 100% 100%;
+
+    mask-image:linear-gradient(90deg, transparent 0, rgba(0,0,0,.45) 16%, #000 48%, #000 100%);
 
 }
 
@@ -903,6 +917,30 @@ section{
 
 }
 
+.architecturalTrace::after{
+
+    content:"AXE A-02 / AGENCEMENT";
+
+    position:absolute;
+
+    left:16px;
+
+    bottom:18px;
+
+    font-family:var(--mono);
+
+    font-size:.58rem;
+
+    font-weight:800;
+
+    letter-spacing:.18em;
+
+    color:rgba(6,150,215,.52);
+
+    text-transform:uppercase;
+
+}
+
 .traceLine,
 .traceRoom{
 
@@ -914,7 +952,7 @@ section{
 
 .traceLine{
 
-    background:rgba(6,150,215,.28);
+    background:rgba(6,150,215,.36);
 
 }
 
@@ -947,13 +985,13 @@ section{
 
 .traceRoom{
 
-    border:1px solid rgba(6,150,215,.24);
+    border:1px solid rgba(6,150,215,.32);
 
     border-radius:6px;
 
     background:
-        linear-gradient(90deg, rgba(6,150,215,.07) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(6,150,215,.07) 1px, transparent 1px);
+        linear-gradient(90deg, rgba(6,150,215,.1) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(6,150,215,.1) 1px, transparent 1px);
 
     background-size:28px 28px;
 
@@ -1090,23 +1128,23 @@ section{
 
     position:absolute;
 
-    inset:70px -40px 96px 70px;
+    inset:28px -96px 66px 8px;
 
     z-index:1;
 
-    border:1px solid rgba(6,150,215,.18);
+    border:1px solid rgba(6,150,215,.22);
 
     border-radius:8px;
 
     background:
-        linear-gradient(90deg, rgba(6,150,215,.11) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(6,150,215,.11) 1px, transparent 1px),
-        linear-gradient(135deg, transparent 0 58%, rgba(6,150,215,.12) 58% 58.25%, transparent 58.25%),
-        linear-gradient(45deg, transparent 0 48%, rgba(6,150,215,.1) 48% 48.25%, transparent 48.25%);
+        linear-gradient(90deg, rgba(6,150,215,.13) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(6,150,215,.13) 1px, transparent 1px),
+        linear-gradient(135deg, transparent 0 58%, rgba(6,150,215,.16) 58% 58.25%, transparent 58.25%),
+        linear-gradient(45deg, transparent 0 48%, rgba(6,150,215,.13) 48% 48.25%, transparent 48.25%);
 
-    background-size:42px 42px, 42px 42px, 100% 100%, 100% 100%;
+    background-size:38px 38px, 38px 38px, 100% 100%, 100% 100%;
 
-    opacity:.52;
+    opacity:.7;
 
     pointer-events:none;
 
@@ -4280,6 +4318,18 @@ section{
 
     background:
 
+        linear-gradient(
+        90deg,
+        transparent 0 54%,
+        rgba(6,150,215,.14) 54% calc(54% + 1px),
+        transparent calc(54% + 1px)),
+
+        linear-gradient(
+        0deg,
+        transparent 0 35%,
+        rgba(6,150,215,.10) 35% calc(35% + 1px),
+        transparent calc(35% + 1px)),
+
         radial-gradient(circle at 15% 20%,
         rgba(6,150,215,.10),
         transparent 30%),
@@ -4302,14 +4352,27 @@ section{
 
     position:absolute;
 
-    inset:0;
+    inset:128px 4vw 58px;
 
-    opacity:.03;
+    z-index:1;
 
-    background-image:
-        radial-gradient(#000 1px,transparent 1px);
+    opacity:.46;
 
-    background-size:18px 18px;
+    border:1px solid rgba(6,150,215,.16);
+
+    border-radius:12px;
+
+    background:
+        linear-gradient(90deg, rgba(6,150,215,.075) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(6,150,215,.075) 1px, transparent 1px),
+        linear-gradient(90deg, transparent 0 18%, rgba(6,150,215,.12) 18% calc(18% + 1px), transparent calc(18% + 1px)),
+        linear-gradient(90deg, transparent 0 78%, rgba(6,150,215,.12) 78% calc(78% + 1px), transparent calc(78% + 1px)),
+        linear-gradient(0deg, transparent 0 72%, rgba(6,150,215,.11) 72% calc(72% + 1px), transparent calc(72% + 1px)),
+        linear-gradient(135deg, transparent 0 67%, rgba(6,150,215,.10) 67% 67.2%, transparent 67.2%);
+
+    background-size:64px 64px, 64px 64px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+
+    mask-image:linear-gradient(90deg, rgba(0,0,0,.52) 0, rgba(0,0,0,.23) 38%, #000 100%);
 
     pointer-events:none;
 
@@ -5344,22 +5407,44 @@ body.dark .architecturalTrace::before{
 
 }
 
+body.dark .architecturalTrace{
+
+    border-color:rgba(125,211,252,.14);
+
+    background:
+        linear-gradient(90deg, rgba(125,211,252,.07) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(125,211,252,.07) 1px, transparent 1px),
+        linear-gradient(135deg, transparent 0 61%, rgba(125,211,252,.12) 61% 61.2%, transparent 61.2%),
+        linear-gradient(45deg, transparent 0 23%, rgba(125,211,252,.09) 23% 23.18%, transparent 23.18%);
+
+    background-size:42px 42px, 42px 42px, 100% 100%, 100% 100%;
+
+}
+
+body.dark .architecturalTrace::after{
+
+    color:rgba(125,211,252,.5);
+
+}
+
 body.dark .traceLine{
 
-    background:rgba(125,211,252,.22);
+    background:rgba(125,211,252,.28);
 
 }
 
 body.dark .traceRoom,
 body.dark .heroVisual::before{
 
-    border-color:rgba(125,211,252,.18);
+    border-color:rgba(125,211,252,.2);
 
     background:
-        linear-gradient(90deg, rgba(125,211,252,.07) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(125,211,252,.07) 1px, transparent 1px);
+        linear-gradient(90deg, rgba(125,211,252,.08) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(125,211,252,.08) 1px, transparent 1px),
+        linear-gradient(135deg, transparent 0 58%, rgba(125,211,252,.11) 58% 58.25%, transparent 58.25%),
+        linear-gradient(45deg, transparent 0 48%, rgba(125,211,252,.1) 48% 48.25%, transparent 48.25%);
 
-    background-size:36px 36px;
+    background-size:38px 38px, 38px 38px, 100% 100%, 100% 100%;
 
 }
 
@@ -5388,6 +5473,24 @@ body.dark .hero{
         rgba(125,211,252,.08) 1px,
         transparent 1px,
         transparent 88px);
+
+}
+
+body.dark .hero::after{
+
+    opacity:.34;
+
+    border-color:rgba(125,211,252,.16);
+
+    background:
+        linear-gradient(90deg, rgba(125,211,252,.06) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(125,211,252,.06) 1px, transparent 1px),
+        linear-gradient(90deg, transparent 0 18%, rgba(125,211,252,.11) 18% calc(18% + 1px), transparent calc(18% + 1px)),
+        linear-gradient(90deg, transparent 0 78%, rgba(125,211,252,.11) 78% calc(78% + 1px), transparent calc(78% + 1px)),
+        linear-gradient(0deg, transparent 0 72%, rgba(125,211,252,.1) 72% calc(72% + 1px), transparent calc(72% + 1px)),
+        linear-gradient(135deg, transparent 0 67%, rgba(125,211,252,.1) 67% 67.2%, transparent 67.2%);
+
+    background-size:64px 64px, 64px 64px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
 
 }
 
@@ -5976,6 +6079,7 @@ body.menu-open{
 
     .heroGrid::before,
     .heroContent::before,
+    .hero::after,
     .architecturalTrace,
     .heroVisual::before,
     .portrait::after{
