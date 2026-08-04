@@ -101,6 +101,7 @@ body.performanceMode .scrollIndicator span{
 
 body.performanceMode .hero,
 body.performanceMode .heroVisual,
+body.performanceMode .architecturalTrace,
 body.performanceMode .heroContent{
 
     transform:none !important;
@@ -549,6 +550,8 @@ section{
 
     position:relative;
 
+    isolation:isolate;
+
     padding-top:180px;
 
     background:
@@ -584,7 +587,7 @@ section{
 
     grid-template-columns:1.1fr .9fr;
 
-    gap:90px;
+    gap:72px;
 
     align-items:center;
 
@@ -703,9 +706,9 @@ section{
 
 .heroLead{
 
-    margin:26px 0 22px;
+    margin:24px 0 24px;
 
-    max-width:620px;
+    max-width:560px;
 
     width:100%;
 
@@ -717,104 +720,59 @@ section{
 
 }
 
-.heroPositioning{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:10px;
-
-    margin:-6px 0 16px;
-
-}
-
-.heroPositioning span{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    min-height:32px;
-
-    padding:7px 10px;
-
-    border:1px solid rgba(6,150,215,.22);
-
-    border-radius:6px;
-
-    background:rgba(255,255,255,.48);
-
-    color:var(--blue-deep);
-
-    font-family:var(--mono);
-
-    font-size:.66rem;
-
-    font-weight:800;
-
-    letter-spacing:.08em;
-
-    text-transform:uppercase;
-
-}
-
 .kitchenBridge{
 
     position:relative;
 
-    max-width:620px;
+    max-width:560px;
 
-    margin:0 0 22px;
+    margin:0 0 26px;
 
-    padding:12px 14px 14px;
+    padding:0;
 
-    border:1px solid rgba(6,150,215,.18);
+    border:0;
 
-    border-left:4px solid var(--blue);
+    border-left:0;
 
-    border-radius:8px;
+    border-radius:0;
 
-    background:
-        linear-gradient(135deg, rgba(255,255,255,.74), rgba(230,248,255,.58)),
-        linear-gradient(90deg, rgba(6,150,215,.08) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(6,150,215,.08) 1px, transparent 1px);
+    background:transparent;
 
-    background-size:auto, 24px 24px, 24px 24px;
+    background-size:auto;
 
-    box-shadow:0 22px 60px rgba(15,23,42,.07);
+    box-shadow:none;
 
-    overflow:hidden;
+    overflow:visible;
 
 }
 
 .kitchenBridge::after{
 
-    content:"A-02";
+    content:"";
 
     position:absolute;
 
-    right:14px;
+    right:0;
 
-    top:12px;
+    top:50%;
 
-    font-family:var(--mono);
-
-    font-size:.68rem;
-
-    font-weight:800;
-
-    letter-spacing:.16em;
-
-    color:rgba(6,150,215,.42);
+    width:58px;
+    height:1px;
+    background:rgba(6,150,215,.32);
 
 }
 
 .bridgeKicker{
 
-    display:block;
+    display:inline-flex;
 
-    margin-bottom:8px;
+    margin-bottom:10px;
+
+    padding:7px 11px;
+
+    border-radius:999px;
+
+    background:rgba(6,150,215,.08);
 
     font-family:var(--mono);
 
@@ -836,7 +794,17 @@ section{
 
     grid-template-columns:repeat(3,1fr);
 
-    gap:8px;
+    gap:0;
+
+    border:1px solid rgba(6,150,215,.18);
+
+    border-radius:8px;
+
+    background:rgba(255,255,255,.58);
+
+    box-shadow:0 18px 46px rgba(15,23,42,.05);
+
+    overflow:hidden;
 
 }
 
@@ -844,7 +812,7 @@ section{
 
     position:relative;
 
-    min-height:36px;
+    min-height:42px;
 
     display:flex;
 
@@ -852,13 +820,13 @@ section{
 
     justify-content:center;
 
-    padding:8px 10px;
+    padding:9px 12px;
 
-    border:1px solid rgba(15,23,42,.08);
+    border:0;
 
-    border-radius:6px;
+    border-radius:0;
 
-    background:rgba(255,255,255,.72);
+    background:rgba(255,255,255,.42);
 
     color:var(--text);
 
@@ -876,15 +844,136 @@ section{
 
     position:absolute;
 
-    right:-9px;
+    right:-1px;
 
     top:50%;
 
-    width:10px;
+    width:1px;
 
-    height:2px;
+    height:22px;
 
-    background:linear-gradient(90deg,var(--blue),rgba(6,150,215,.15));
+    background:rgba(6,150,215,.2);
+
+}
+
+
+/*==================================================
+ ARCHITECTURAL TRACE
+==================================================*/
+
+.architecturalTrace{
+
+    position:absolute;
+
+    right:5vw;
+
+    top:190px;
+
+    width:min(720px,46vw);
+
+    height:min(680px,68vh);
+
+    z-index:2;
+
+    pointer-events:none;
+
+    opacity:.34;
+
+}
+
+.architecturalTrace::before{
+
+    content:"PLAN / COORDINATION";
+
+    position:absolute;
+
+    right:18px;
+
+    top:18px;
+
+    font-family:var(--mono);
+
+    font-size:.62rem;
+
+    font-weight:800;
+
+    letter-spacing:.18em;
+
+    color:rgba(6,150,215,.62);
+
+}
+
+.traceLine,
+.traceRoom{
+
+    position:absolute;
+
+    display:block;
+
+}
+
+.traceLine{
+
+    background:rgba(6,150,215,.28);
+
+}
+
+.traceLineA{
+
+    left:8%;
+    right:8%;
+    top:28%;
+    height:1px;
+
+}
+
+.traceLineB{
+
+    top:10%;
+    bottom:12%;
+    left:42%;
+    width:1px;
+
+}
+
+.traceLineC{
+
+    left:20%;
+    right:24%;
+    bottom:24%;
+    height:1px;
+
+}
+
+.traceRoom{
+
+    border:1px solid rgba(6,150,215,.24);
+
+    border-radius:6px;
+
+    background:
+        linear-gradient(90deg, rgba(6,150,215,.07) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(6,150,215,.07) 1px, transparent 1px);
+
+    background-size:28px 28px;
+
+}
+
+.traceRoomA{
+
+    right:10%;
+    top:18%;
+    width:38%;
+    height:32%;
+
+}
+
+.traceRoomB{
+
+    left:12%;
+    bottom:14%;
+    width:34%;
+    height:24%;
 
 }
 
@@ -992,6 +1081,34 @@ section{
     align-items:center;
 
     min-height:760px;
+
+}
+
+.heroVisual::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:70px -40px 96px 70px;
+
+    z-index:1;
+
+    border:1px solid rgba(6,150,215,.18);
+
+    border-radius:8px;
+
+    background:
+        linear-gradient(90deg, rgba(6,150,215,.11) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(6,150,215,.11) 1px, transparent 1px),
+        linear-gradient(135deg, transparent 0 58%, rgba(6,150,215,.12) 58% 58.25%, transparent 58.25%),
+        linear-gradient(45deg, transparent 0 48%, rgba(6,150,215,.1) 48% 48.25%, transparent 48.25%);
+
+    background-size:42px 42px, 42px 42px, 100% 100%, 100% 100%;
+
+    opacity:.52;
+
+    pointer-events:none;
 
 }
 
@@ -1211,33 +1328,33 @@ section{
 
 .heroStats{
 
-    margin-top:42px;
+    margin-top:34px;
 
     display:grid;
 
     grid-template-columns:repeat(4,1fr);
 
-    gap:22px;
+    gap:14px;
 
 }
 
 .stat{
 
-    padding:20px;
+    padding:16px 18px;
 
     border-radius:8px;
 
     background:
 
-        rgba(255,255,255,.62);
+        rgba(255,255,255,.48);
 
     backdrop-filter:blur(18px);
 
-    border:1px solid rgba(255,255,255,.7);
+    border:1px solid rgba(6,150,215,.12);
 
     box-shadow:
 
-        0 18px 40px rgba(15,23,42,.06);
+        0 12px 30px rgba(15,23,42,.045);
 
     position:relative;
 
@@ -1253,7 +1370,7 @@ section{
 
     inset:0 0 auto;
 
-    height:3px;
+    height:2px;
 
     background:linear-gradient(90deg,var(--blue),rgba(6,150,215,0));
 
@@ -1263,13 +1380,13 @@ section{
 
     display:block;
 
-    font-size:1.85rem;
+    font-size:1.62rem;
 
     font-weight:900;
 
     color:var(--blue);
 
-    margin-bottom:8px;
+    margin-bottom:6px;
 
 }
 
@@ -1277,7 +1394,7 @@ section{
 
     display:block;
 
-    font-size:.95rem;
+    font-size:.82rem;
 
     color:var(--text-light);
 
@@ -1776,7 +1893,7 @@ section{
 
 .whyTitle{
 
-    font-size:clamp(1.9rem,3.6vw,3.2rem);
+    font-size:clamp(1.8rem,3.2vw,2.95rem);
 
     line-height:1.1;
 
@@ -1784,7 +1901,7 @@ section{
 
     font-weight:900;
 
-    max-width:980px;
+    max-width:1120px;
 
 }
 
@@ -4124,13 +4241,13 @@ section{
 
 .hero h1{
 
-    font-size:4.6rem;
+    font-size:4.18rem;
 
 }
 
 .heroLead{
 
-    font-size:1.35rem;
+    font-size:1.18rem;
 
 }
 
@@ -5170,28 +5287,15 @@ body.dark .heroContent::before{
 
 }
 
-body.dark .heroPositioning span{
-
-    background:rgba(15,23,42,.55);
-
-    border-color:rgba(125,211,252,.22);
-
-    color:#BAE6FD;
-
-}
-
 body.dark .kitchenBridge{
 
-    background:
-        linear-gradient(135deg, rgba(15,23,42,.82), rgba(14,116,144,.16)),
-        linear-gradient(90deg, rgba(125,211,252,.08) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(125,211,252,.08) 1px, transparent 1px);
+    background:transparent;
 
-    background-size:auto, 24px 24px, 24px 24px;
+    background-size:auto;
 
-    border-color:rgba(125,211,252,.22);
+    border:0;
 
-    border-left-color:#38BDF8;
+    box-shadow:none;
 
 }
 
@@ -5202,13 +5306,60 @@ body.dark .bridgeKicker{
 
 }
 
+body.dark .kitchenBridge::after{
+
+    background:rgba(125,211,252,.28);
+
+}
+
+body.dark .bridgeKicker{
+
+    background:rgba(14,165,233,.16);
+
+}
+
+body.dark .bridgeFlow{
+
+    background:rgba(15,23,42,.42);
+
+    border-color:rgba(125,211,252,.2);
+
+    box-shadow:0 18px 46px rgba(0,0,0,.12);
+
+}
+
 body.dark .bridgeFlow span{
 
-    background:rgba(15,23,42,.72);
+    background:rgba(15,23,42,.18);
+
+    border-color:transparent;
+
+    color:#F8FAFC;
+
+}
+
+body.dark .architecturalTrace::before{
+
+    color:rgba(125,211,252,.62);
+
+}
+
+body.dark .traceLine{
+
+    background:rgba(125,211,252,.22);
+
+}
+
+body.dark .traceRoom,
+body.dark .heroVisual::before{
 
     border-color:rgba(125,211,252,.18);
 
-    color:#F8FAFC;
+    background:
+        linear-gradient(90deg, rgba(125,211,252,.07) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(125,211,252,.07) 1px, transparent 1px);
+
+    background-size:36px 36px;
 
 }
 
@@ -5487,6 +5638,7 @@ body.dark strong{
 
 .hero,
 .heroVisual,
+.architecturalTrace,
 .mesh,
 .heroHalo,
 .portrait,
@@ -5824,15 +5976,11 @@ body.menu-open{
 
     .heroGrid::before,
     .heroContent::before,
+    .architecturalTrace,
+    .heroVisual::before,
     .portrait::after{
 
         display:none;
-
-    }
-
-    .heroPositioning{
-
-        justify-content:center;
 
     }
 
@@ -5847,22 +5995,6 @@ body.menu-open{
 }
 
 @media (max-width:620px){
-
-    .heroPositioning{
-
-        margin-top:-6px;
-
-    }
-
-    .heroPositioning span{
-
-        width:100%;
-
-        justify-content:center;
-
-        text-align:center;
-
-    }
 
     .kitchenBridge{
 
