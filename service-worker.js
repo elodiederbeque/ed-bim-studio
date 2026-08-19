@@ -1,16 +1,16 @@
-const CACHE_NAME = "ed-bim-studio-pwa-v20260819-dark-install";
+const CACHE_NAME = "ed-bim-studio-pwa-v20260819-install-fix";
 
 const APP_SHELL = [
   "./",
   "./index.html",
-  "./style.css?v=20260819-dark-pwa",
-  "./script.js?v=20260819-dark-pwa",
-  "./manifest.json?v=20260819-dark-pwa",
+  "./style.css?v=20260819-install-fix",
+  "./pwa.js?v=20260819-install-fix",
+  "./script.js?v=20260819-install-fix",
+  "./manifest.json",
   "./Actifs/favicon-32.png",
   "./Actifs/apple-touch-icon.png",
   "./Actifs/icone-ed-192.png",
-  "./Actifs/icone-ed-512.png",
-  "./Actifs/social-preview.png"
+  "./Actifs/icone-ed-512.png"
 ];
 
 self.addEventListener("install", (event) => {
