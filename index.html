@@ -36,7 +36,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20260819-makbat-pwa">
+    <link rel="stylesheet" href="style.css?v=20260819-pwa-service-worker">
 </head>
 
 <body class="loading dark">
@@ -62,6 +62,7 @@
             <li><a href="#objective">Objectif</a></li>
         </ul>
         <a href="#contact" class="navButton">Contact</a>
+        <button id="installAppButton" class="installAppButton" type="button" hidden>Installer</button>
         <button id="darkToggle" class="darkToggle" aria-label="Basculer le mode sombre" aria-pressed="false">
             <span class="darkIcon">&#9790;</span>
         </button>
@@ -89,6 +90,7 @@
         <li><a href="#documents">Documents</a></li>
         <li><a href="#objective">Objectif</a></li>
         <li><a href="#contact" class="navButton">Contact</a></li>
+        <li><button id="installAppMenuButton" class="installAppMenuButton" type="button" hidden>Installer l'appli</button></li>
     </ul>
 </div>
 
@@ -540,6 +542,6 @@
 
 </main>
 
-<script src="script.js?v=20260819-makbat-pwa"></script>
+<script src="script.js?v=20260819-pwa-service-worker"></script>
 </body>
 </html>

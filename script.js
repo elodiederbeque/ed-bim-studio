@@ -1333,6 +1333,130 @@ window.addEventListener("resize",()=>{
 
 
 /*==================================================
+ PWA INSTALL
+==================================================*/
+
+const installButtons=[
+    document.getElementById("installAppButton"),
+    document.getElementById("installAppMenuButton")
+].filter(Boolean);
+
+let deferredInstallPrompt=null;
+
+function isRunningAsApp(){
+
+    return window.matchMedia("(display-mode: standalone)").matches ||
+        window.navigator.standalone===true;
+
+}
+
+function setInstallButtonsVisible(visible){
+
+    installButtons.forEach((button)=>{
+
+        button.hidden=!visible;
+
+    });
+
+}
+
+function installHelpMessage(){
+
+    const ua=navigator.userAgent || "";
+    const isiOS=/iPad|iPhone|iPod/.test(ua) || (ua.includes("Mac") && "ontouchend" in document);
+
+    if(isiOS){
+
+        return "Sur iPhone : ouvre le bouton Partager, puis choisis Ajouter a l'ecran d'accueil.";
+
+    }
+
+    return "Dans Chrome : ouvre le menu avec les trois points, puis choisis Installer l'application ou Ajouter a l'ecran d'accueil.";
+
+}
+
+window.addEventListener("beforeinstallprompt",(event)=>{
+
+    event.preventDefault();
+    deferredInstallPrompt=event;
+
+    if(!isRunningAsApp()){
+
+        setInstallButtonsVisible(true);
+
+    }
+
+});
+
+installButtons.forEach((button)=>{
+
+    button.addEventListener("click",async()=>{
+
+        if(isRunningAsApp()){
+
+            setInstallButtonsVisible(false);
+            return;
+
+        }
+
+        if(deferredInstallPrompt){
+
+            const promptEvent=deferredInstallPrompt;
+            deferredInstallPrompt=null;
+            promptEvent.prompt();
+
+            try{
+
+                const choice=await promptEvent.userChoice;
+
+                if(choice && choice.outcome==="accepted"){
+
+                    setInstallButtonsVisible(false);
+
+                }
+
+            }catch(error){}
+
+            return;
+
+        }
+
+        window.alert(installHelpMessage());
+
+    });
+
+});
+
+window.addEventListener("appinstalled",()=>{
+
+    deferredInstallPrompt=null;
+    setInstallButtonsVisible(false);
+
+});
+
+if("serviceWorker" in navigator){
+
+    window.addEventListener("load",()=>{
+
+        navigator.serviceWorker.register("./service-worker.js",{scope:"./"})
+            .then(()=>navigator.serviceWorker.ready)
+            .then(()=>{
+
+                if(!isRunningAsApp() && !deferredInstallPrompt){
+
+                    setInstallButtonsVisible(true);
+
+                }
+
+            })
+            .catch(()=>{});
+
+    });
+
+}
+
+
+/*==================================================
  CONSOLE
 ==================================================*/
 

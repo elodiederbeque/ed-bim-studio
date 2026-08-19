@@ -2,11 +2,16 @@
   "name": "ED BIM Studio",
   "short_name": "ED BIM",
   "description": "Portfolio BIM d'Elodie Derbeque et presentation du projet ED BIM Starter.",
+  "id": "./",
+  "lang": "fr-BE",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
   "background_color": "#07111f",
   "theme_color": "#07111f",
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "Actifs/icons/icon-192.png",
