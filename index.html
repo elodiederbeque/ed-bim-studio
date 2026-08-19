@@ -24,21 +24,22 @@
     <meta name="twitter:image" content="https://elodiederbeque.github.io/ed-bim-studio/Actifs/social-preview.png">
     <meta name="theme-color" content="#07111f">
     <meta name="color-scheme" content="light dark">
+    <meta name="application-name" content="ED BIM Studio">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="ED BIM Studio">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="manifest.json?v=20260819-dark-pwa">
     <link rel="icon" type="image/png" sizes="32x32" href="Actifs/favicon-32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="Actifs/icone-ed-192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="Actifs/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=20260819-pwa">
+    <link rel="stylesheet" href="style.css?v=20260819-dark-pwa">
 </head>
 
-<body class="loading">
+<body class="loading dark">
 
 <div class="loader">
     <div class="loaderLogo">ED</div>
@@ -61,6 +62,7 @@
             <li><a href="#objective">Objectif</a></li>
         </ul>
         <a href="#contact" class="navButton">Contact</a>
+        <button id="installAppButton" class="installAppButton" type="button" aria-label="Installer ED BIM Studio sur ce telephone" hidden>Installer</button>
         <button id="darkToggle" class="darkToggle" aria-label="Basculer le mode sombre" aria-pressed="false">
             <span class="darkIcon">&#9790;</span>
         </button>
@@ -88,6 +90,7 @@
         <li><a href="#documents">Documents</a></li>
         <li><a href="#objective">Objectif</a></li>
         <li><a href="#contact" class="navButton">Contact</a></li>
+        <li class="installAppMenuItem"><button id="installAppMenuButton" class="installAppButton installAppMenuButton" type="button" aria-label="Installer ED BIM Studio sur ce telephone" hidden>Installer l'app</button></li>
     </ul>
 </div>
 
@@ -539,6 +542,6 @@
 
 </main>
 
-<script src="script.js?v=20260819-pwa"></script>
+<script src="script.js?v=20260819-dark-pwa"></script>
 </body>
 </html>

@@ -443,6 +443,68 @@ section{
 
 }
 
+.installAppButton{
+
+    min-height:42px;
+
+    padding:0 18px;
+
+    border:0;
+
+    border-radius:999px;
+
+    color:#fff;
+
+    background:#07111f;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:.92rem;
+
+    font-weight:800;
+
+    white-space:nowrap;
+
+    cursor:pointer;
+
+    box-shadow:0 14px 32px rgba(15,23,42,.18);
+
+    transition:var(--transition);
+
+}
+
+.installAppButton.is-visible{
+
+    display:inline-flex;
+
+}
+
+.installAppButton[hidden]{
+
+    display:none !important;
+
+}
+
+.installAppButton:hover{
+
+    transform:translateY(-3px) scale(1.04);
+
+}
+
+body.dark .installAppButton{
+
+    color:#07111f;
+
+    background:#F8FAFC;
+
+    box-shadow:0 14px 34px rgba(125,211,252,.16);
+
+}
+
 
 /*==================================================
  BUTTONS
@@ -6416,6 +6478,16 @@ section{
 
 }
 
+.header .nav > .installAppButton{
+
+    min-height:38px;
+    padding:0 12px;
+    flex:0 0 auto;
+    margin-left:auto;
+    font-size:.78rem;
+
+}
+
 .darkToggle,
 .menuToggle{
 
@@ -6564,6 +6636,31 @@ body.dark .mobileQuickNav a:focus-visible{
     margin-top:0;
     color:#fff;
     background:linear-gradient(135deg,var(--blue),var(--blue-light));
+
+}
+
+.mobileMenu li[hidden]{
+
+    display:none;
+
+}
+
+.mobileMenu .installAppMenuItem{
+
+    grid-column:1 / -1;
+
+}
+
+.mobileMenu .installAppMenuButton{
+
+    width:100%;
+    min-height:42px;
+    padding:10px 12px;
+    border-radius:8px;
+    color:#fff;
+    background:linear-gradient(135deg,var(--blue),var(--blue-light));
+    box-shadow:none;
+    font-size:.9rem;
 
 }
 

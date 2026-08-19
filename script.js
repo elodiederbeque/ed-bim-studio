@@ -1134,12 +1134,46 @@ if(menuToggle && mobileMenu){
 ==================================================*/
 
 const darkToggle=document.getElementById("darkToggle");
+const themeColorMeta=document.querySelector('meta[name="theme-color"]');
+const themeStorageKey="edbim-theme-v2";
+
+function readThemePreference(){
+
+    try{
+
+        return localStorage.getItem(themeStorageKey);
+
+    }catch(error){
+
+        return null;
+
+    }
+
+}
+
+function saveThemePreference(value){
+
+    try{
+
+        localStorage.setItem(themeStorageKey,value);
+        localStorage.removeItem("edbim-theme");
+
+    }catch(error){}
+
+}
 
 function updateDarkToggleIcon(){
 
+    const isDark=document.body.classList.contains("dark");
+
+    if(themeColorMeta){
+
+        themeColorMeta.setAttribute("content",isDark?"#07111f":"#0696D7");
+
+    }
+
     if(!darkToggle) return;
 
-    const isDark=document.body.classList.contains("dark");
     const icon=darkToggle.querySelector(".darkIcon");
 
     if(icon){
@@ -1154,13 +1188,11 @@ function updateDarkToggleIcon(){
 
 function applyDarkPreference(){
 
-    const saved=localStorage.getItem("edbim-theme");
+    const saved=readThemePreference();
 
-    if(saved==="dark"){
+    document.body.classList.toggle("dark",saved!=="light");
 
-        document.body.classList.add("dark");
-
-    }
+    updateDarkToggleIcon();
 
 }
 
@@ -1172,13 +1204,11 @@ if(darkToggle){
 
         const isDark=document.body.classList.toggle("dark");
 
-        localStorage.setItem("edbim-theme",isDark?"dark":"light");
+        saveThemePreference(isDark?"dark":"light");
 
         updateDarkToggleIcon();
 
     });
-
-    updateDarkToggleIcon();
 
 }
 
@@ -1306,15 +1336,113 @@ window.addEventListener("resize",()=>{
  PWA
 ==================================================*/
 
-if("serviceWorker" in navigator && window.location.protocol !== "file:"){
+const installAppButtons=Array.from(document.querySelectorAll(".installAppButton"));
+let deferredInstallPrompt=null;
 
-    window.addEventListener("load",()=>{
+function isStandaloneApp(){
 
-        navigator.serviceWorker.register("./service-worker.js").catch(()=>{});
+    return window.matchMedia("(display-mode: standalone)").matches ||
+        window.navigator.standalone===true;
+
+}
+
+function isMobileInstallSurface(){
+
+    return window.matchMedia("(max-width: 900px)").matches ||
+        /android|iphone|ipad|ipod/i.test(navigator.userAgent);
+
+}
+
+function updateInstallButtons(){
+
+    const canShow=window.location.protocol!=="file:" &&
+        !isStandaloneApp() &&
+        (deferredInstallPrompt || isMobileInstallSurface());
+
+    installAppButtons.forEach(button=>{
+
+        button.hidden=!canShow;
+        button.classList.toggle("is-visible",canShow);
+
+        const parent=button.closest("li");
+
+        if(parent && parent.classList.contains("installAppMenuItem")){
+
+            parent.hidden=!canShow;
+
+        }
 
     });
 
 }
+
+function showInstallHelp(){
+
+    const isApple=/iphone|ipad|ipod/i.test(navigator.userAgent);
+
+    window.alert(isApple?
+        "Sur iPhone : touche Partager, puis Ajouter a l'ecran d'accueil.":
+        "Sur Android : ouvre cette page dans Chrome, puis touche Installer ou Ajouter a l'ecran d'accueil."
+    );
+
+}
+
+window.addEventListener("beforeinstallprompt",(event)=>{
+
+    event.preventDefault();
+    deferredInstallPrompt=event;
+    updateInstallButtons();
+
+});
+
+installAppButtons.forEach(button=>{
+
+    button.addEventListener("click",async()=>{
+
+        if(deferredInstallPrompt){
+
+            deferredInstallPrompt.prompt();
+
+            try{
+
+                await deferredInstallPrompt.userChoice;
+
+            }catch(error){}
+
+            deferredInstallPrompt=null;
+            updateInstallButtons();
+            return;
+
+        }
+
+        showInstallHelp();
+
+    });
+
+});
+
+window.addEventListener("appinstalled",()=>{
+
+    deferredInstallPrompt=null;
+    updateInstallButtons();
+
+});
+
+if("serviceWorker" in navigator && window.location.protocol !== "file:"){
+
+    window.addEventListener("load",()=>{
+
+        navigator.serviceWorker
+            .register("./service-worker.js",{scope:"./"})
+            .then(()=>navigator.serviceWorker.ready)
+            .then(updateInstallButtons)
+            .catch(updateInstallButtons);
+
+    });
+
+}
+
+updateInstallButtons();
 
 
 /*==================================================

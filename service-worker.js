@@ -1,11 +1,11 @@
-const CACHE_NAME = "ed-bim-studio-pwa-v20260819-readable-icon";
+const CACHE_NAME = "ed-bim-studio-pwa-v20260819-dark-install";
 
 const APP_SHELL = [
   "./",
   "./index.html",
-  "./style.css?v=20260819-pwa",
-  "./script.js?v=20260819-pwa",
-  "./manifest.json",
+  "./style.css?v=20260819-dark-pwa",
+  "./script.js?v=20260819-dark-pwa",
+  "./manifest.json?v=20260819-dark-pwa",
   "./Actifs/favicon-32.png",
   "./Actifs/apple-touch-icon.png",
   "./Actifs/icone-ed-192.png",
@@ -15,9 +15,12 @@ const APP_SHELL = [
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(APP_SHELL))
-      .then(() => self.skipWaiting())
+    caches.open(CACHE_NAME).then(async (cache) => {
+      await Promise.allSettled(
+        APP_SHELL.map((url) => cache.add(new Request(url, { cache: "reload" })))
+      );
+      await self.skipWaiting();
+    })
   );
 });
 
