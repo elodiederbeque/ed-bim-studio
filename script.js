@@ -24,7 +24,7 @@ const floatingCards = document.querySelectorAll(".floatingCard");
 
 const sections = document.querySelectorAll("section");
 
-const menuLinks = document.querySelectorAll(".menu a");
+const menuLinks = document.querySelectorAll(".menu a, .mobileQuickNav a");
 
 const ENABLE_HEAVY_MOTION = false;
 
@@ -1135,6 +1135,23 @@ if(menuToggle && mobileMenu){
 
 const darkToggle=document.getElementById("darkToggle");
 
+function updateDarkToggleIcon(){
+
+    if(!darkToggle) return;
+
+    const isDark=document.body.classList.contains("dark");
+    const icon=darkToggle.querySelector(".darkIcon");
+
+    if(icon){
+
+        icon.innerHTML=isDark?"&#9728;":"&#9790;";
+
+    }
+
+    darkToggle.setAttribute("aria-pressed",isDark?"true":"false");
+
+}
+
 function applyDarkPreference(){
 
     const saved=localStorage.getItem("edbim-theme");
@@ -1157,15 +1174,11 @@ if(darkToggle){
 
         localStorage.setItem("edbim-theme",isDark?"dark":"light");
 
-        darkToggle.querySelector(".darkIcon").textContent=isDark?"☀️":"🌙";
+        updateDarkToggleIcon();
 
     });
 
-    if(document.body.classList.contains("dark")){
-
-        darkToggle.querySelector(".darkIcon").textContent="☀️";
-
-    }
+    updateDarkToggleIcon();
 
 }
 
