@@ -1,4 +1,4 @@
-const CACHE_NAME = "ed-bim-studio-pwa-v20260819";
+const CACHE_NAME = "ed-bim-studio-pwa-v20260819-readable-icon";
 
 const APP_SHELL = [
   "./",
