@@ -1457,215 +1457,254 @@ if("serviceWorker" in navigator){
 
 
 /*==================================================
-  MOBILE PWA INSTALL INVITE
-  Ajout non invasif : invitation d’installation sur GSM
+ MOBILE INSTALL INVITE (QR / BROWSER / PWA)
 ==================================================*/
 
-function createMobileInstallInvite(){
+const mobileInstallInviteState={
+    element:null
+};
 
-    if(isRunningAsApp()) return;
-    if(window.innerWidth>900) return;
-    if(document.getElementById("pwaInstallInvite")) return;
+function isMobileInstallViewport(){
 
-    try{
-
-        if(sessionStorage.getItem("edbim-install-invite-dismissed")==="1") return;
-
-    }catch(error){}
-
-    const invite=document.createElement("div");
-    invite.id="pwaInstallInvite";
-    invite.setAttribute("role","dialog");
-    invite.setAttribute("aria-label","Installer ED BIM Studio");
-
-    Object.assign(invite.style,{
-
-        position:"fixed",
-        left:"14px",
-        right:"14px",
-        bottom:"14px",
-        zIndex:"99999",
-        display:"flex",
-        alignItems:"center",
-        gap:"12px",
-        padding:"12px",
-        borderRadius:"20px",
-        background:"rgba(7,17,31,.96)",
-        border:"1px solid rgba(6,150,215,.35)",
-        boxShadow:"0 18px 60px rgba(0,0,0,.38)",
-        backdropFilter:"blur(18px)",
-        WebkitBackdropFilter:"blur(18px)",
-        color:"#ffffff",
-        fontFamily:"Inter,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif",
-        transform:"translateY(140%)",
-        opacity:"0",
-        transition:"transform .45s cubic-bezier(.22,.61,.36,1), opacity .35s ease"
-
-    });
-
-    const icon=document.createElement("img");
-    icon.src="Actifs/icons/icon-192.png";
-    icon.alt="ED BIM Studio";
-
-    Object.assign(icon.style,{
-
-        width:"54px",
-        height:"54px",
-        flex:"0 0 54px",
-        objectFit:"cover",
-        borderRadius:"15px"
-
-    });
-
-    const copy=document.createElement("div");
-    copy.style.flex="1";
-    copy.style.minWidth="0";
-
-    const title=document.createElement("strong");
-    title.textContent="Installer ED BIM Studio";
-
-    Object.assign(title.style,{
-
-        display:"block",
-        marginBottom:"3px",
-        fontSize:"15px",
-        lineHeight:"1.2",
-        fontWeight:"800"
-
-    });
-
-    const text=document.createElement("span");
-    text.textContent="Ajoutez l'appli à votre écran d'accueil.";
-
-    Object.assign(text.style,{
-
-        display:"block",
-        color:"#a9c6d8",
-        fontSize:"12px",
-        lineHeight:"1.35"
-
-    });
-
-    copy.append(title,text);
-
-    const install=document.createElement("button");
-    install.type="button";
-    install.textContent="Installer";
-
-    Object.assign(install.style,{
-
-        border:"0",
-        borderRadius:"14px",
-        padding:"11px 13px",
-        background:"#0696D7",
-        color:"#ffffff",
-        fontSize:"13px",
-        fontWeight:"800",
-        cursor:"pointer",
-        whiteSpace:"nowrap"
-
-    });
-
-    const close=document.createElement("button");
-    close.type="button";
-    close.setAttribute("aria-label","Fermer");
-    close.textContent="×";
-
-    Object.assign(close.style,{
-
-        position:"absolute",
-        top:"5px",
-        right:"7px",
-        width:"26px",
-        height:"26px",
-        border:"0",
-        background:"transparent",
-        color:"#8fa8b8",
-        fontSize:"22px",
-        lineHeight:"22px",
-        cursor:"pointer"
-
-    });
-
-    invite.append(icon,copy,install,close);
-    document.body.appendChild(invite);
-
-    requestAnimationFrame(()=>{
-
-        requestAnimationFrame(()=>{
-
-            invite.style.transform="translateY(0)";
-            invite.style.opacity="1";
-
-        });
-
-    });
-
-    function removeInvite(){
-
-        invite.style.transform="translateY(140%)";
-        invite.style.opacity="0";
-
-        setTimeout(()=>invite.remove(),450);
-
-    }
-
-    close.addEventListener("click",()=>{
-
-        try{
-
-            sessionStorage.setItem("edbim-install-invite-dismissed","1");
-
-        }catch(error){}
-
-        removeInvite();
-
-    });
-
-    install.addEventListener("click",async()=>{
-
-        if(isRunningAsApp()){
-
-            removeInvite();
-            return;
-
-        }
-
-        if(deferredInstallPrompt){
-
-            const promptEvent=deferredInstallPrompt;
-            deferredInstallPrompt=null;
-            promptEvent.prompt();
-
-            try{
-
-                const choice=await promptEvent.userChoice;
-
-                if(choice && choice.outcome==="accepted"){
-
-                    removeInvite();
-
-                }
-
-            }catch(error){}
-
-            return;
-
-        }
-
-        window.alert(installHelpMessage());
-
-    });
-
-    window.addEventListener("appinstalled",removeInvite,{once:true});
+    return window.matchMedia("(max-width: 900px)").matches ||
+        /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || "");
 
 }
 
-window.addEventListener("load",()=>{
+function isIOSDevice(){
 
-    setTimeout(createMobileInstallInvite,1600);
+    const ua=navigator.userAgent || "";
+
+    return /iPad|iPhone|iPod/.test(ua) ||
+        (ua.includes("Mac") && "ontouchend" in document);
+
+}
+
+function openCurrentPageInChrome(){
+
+    const currentUrl=new URL(window.location.href);
+    const path=`${currentUrl.host}${currentUrl.pathname}${currentUrl.search}${currentUrl.hash}`;
+    const chromeIntent=`intent://${path}#Intent;scheme=${currentUrl.protocol.replace(":","")};package=com.android.chrome;end`;
+
+    window.location.href=chromeIntent;
+
+}
+
+async function launchMobileInstall(){
+
+    if(isRunningAsApp()){
+
+        if(mobileInstallInviteState.element){
+            mobileInstallInviteState.element.remove();
+            mobileInstallInviteState.element=null;
+        }
+
+        return;
+
+    }
+
+    if(deferredInstallPrompt){
+
+        const promptEvent=deferredInstallPrompt;
+        deferredInstallPrompt=null;
+
+        promptEvent.prompt();
+
+        try{
+
+            const choice=await promptEvent.userChoice;
+
+            if(choice && choice.outcome==="accepted" && mobileInstallInviteState.element){
+
+                mobileInstallInviteState.element.remove();
+                mobileInstallInviteState.element=null;
+
+            }
+
+        }catch(error){}
+
+        return;
+
+    }
+
+    if(isIOSDevice()){
+
+        window.alert("Sur iPhone : touche Partager, puis Ajouter à l’écran d’accueil.");
+        return;
+
+    }
+
+    if(/Android/i.test(navigator.userAgent || "")){
+
+        openCurrentPageInChrome();
+        return;
+
+    }
+
+    window.alert("Ouvre ce site dans Chrome, puis choisis Installer l’application dans le menu du navigateur.");
+
+}
+
+function createMobileInstallInvite(){
+
+    if(!isMobileInstallViewport() || isRunningAsApp() || mobileInstallInviteState.element){
+        return;
+    }
+
+    const style=document.createElement("style");
+    style.id="edbim-install-invite-style";
+    style.textContent=`
+        .edbimInstallInvite{
+            position:fixed;
+            left:14px;
+            right:14px;
+            bottom:calc(14px + env(safe-area-inset-bottom));
+            z-index:99999;
+            display:grid;
+            grid-template-columns:52px minmax(0,1fr) auto;
+            align-items:center;
+            gap:12px;
+            padding:12px 12px 12px 10px;
+            border:1px solid rgba(56,189,248,.32);
+            border-radius:20px;
+            background:rgba(7,17,31,.96);
+            box-shadow:0 18px 55px rgba(0,0,0,.42), 0 0 0 1px rgba(255,255,255,.03) inset;
+            backdrop-filter:blur(18px);
+            -webkit-backdrop-filter:blur(18px);
+            color:#fff;
+            font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+            transform:translateY(24px);
+            opacity:0;
+            animation:edbimInstallInviteIn .45s ease forwards;
+        }
+        .edbimInstallInvite img{
+            width:52px;
+            height:52px;
+            object-fit:cover;
+            border-radius:14px;
+            box-shadow:0 8px 24px rgba(0,0,0,.25);
+        }
+        .edbimInstallInviteCopy{
+            min-width:0;
+        }
+        .edbimInstallInviteCopy strong{
+            display:block;
+            font-size:14px;
+            line-height:1.2;
+            letter-spacing:-.01em;
+        }
+        .edbimInstallInviteCopy span{
+            display:block;
+            margin-top:3px;
+            color:#a9bdd2;
+            font-size:11.5px;
+            line-height:1.3;
+        }
+        .edbimInstallInviteAction{
+            border:0;
+            border-radius:999px;
+            padding:11px 14px;
+            background:linear-gradient(135deg,#0696D7,#21b8f3);
+            color:#fff;
+            font:700 12px/1 Inter,system-ui,sans-serif;
+            white-space:nowrap;
+            box-shadow:0 8px 22px rgba(6,150,215,.28);
+        }
+        .edbimInstallInviteClose{
+            position:absolute;
+            top:-8px;
+            right:-5px;
+            width:26px;
+            height:26px;
+            border:1px solid rgba(255,255,255,.13);
+            border-radius:50%;
+            background:#102033;
+            color:#d9e7f4;
+            font:600 17px/1 Arial,sans-serif;
+            display:grid;
+            place-items:center;
+            padding:0;
+        }
+        @keyframes edbimInstallInviteIn{
+            to{transform:translateY(0);opacity:1;}
+        }
+        @media (max-width:420px){
+            .edbimInstallInvite{
+                grid-template-columns:46px minmax(0,1fr) auto;
+                gap:9px;
+                padding:10px 10px 10px 9px;
+            }
+            .edbimInstallInvite img{
+                width:46px;
+                height:46px;
+                border-radius:12px;
+            }
+            .edbimInstallInviteCopy strong{font-size:13px;}
+            .edbimInstallInviteCopy span{font-size:10.5px;}
+            .edbimInstallInviteAction{padding:10px 11px;font-size:11px;}
+        }
+    `;
+
+    if(!document.getElementById(style.id)){
+        document.head.appendChild(style);
+    }
+
+    const invite=document.createElement("aside");
+    invite.className="edbimInstallInvite";
+    invite.setAttribute("role","dialog");
+    invite.setAttribute("aria-label","Installer ED BIM Studio");
+
+    invite.innerHTML=`
+        <img src="Actifs/icons/icon-192.png" alt="" aria-hidden="true">
+        <div class="edbimInstallInviteCopy">
+            <strong>Installer ED BIM Studio</strong>
+            <span>Gardez le portfolio comme une vraie appli sur votre téléphone.</span>
+        </div>
+        <button class="edbimInstallInviteAction" type="button">Installer</button>
+        <button class="edbimInstallInviteClose" type="button" aria-label="Fermer">×</button>
+    `;
+
+    const action=invite.querySelector(".edbimInstallInviteAction");
+    const close=invite.querySelector(".edbimInstallInviteClose");
+
+    action.addEventListener("click",launchMobileInstall);
+
+    close.addEventListener("click",()=>{
+        invite.remove();
+        mobileInstallInviteState.element=null;
+    });
+
+    document.body.appendChild(invite);
+    mobileInstallInviteState.element=invite;
+
+}
+
+window.addEventListener("beforeinstallprompt",()=>{
+
+    if(mobileInstallInviteState.element){
+
+        const action=mobileInstallInviteState.element.querySelector(".edbimInstallInviteAction");
+        if(action) action.textContent="Installer";
+
+    }
 
 });
+
+window.addEventListener("appinstalled",()=>{
+
+    if(mobileInstallInviteState.element){
+        mobileInstallInviteState.element.remove();
+        mobileInstallInviteState.element=null;
+    }
+
+});
+
+window.addEventListener("load",()=>{
+
+    window.setTimeout(createMobileInstallInvite,1200);
+
+});
+
 
 /*==================================================
  CONSOLE
