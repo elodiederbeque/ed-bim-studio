@@ -1457,6 +1457,217 @@ if("serviceWorker" in navigator){
 
 
 /*==================================================
+  MOBILE PWA INSTALL INVITE
+  Ajout non invasif : invitation d’installation sur GSM
+==================================================*/
+
+function createMobileInstallInvite(){
+
+    if(isRunningAsApp()) return;
+    if(window.innerWidth>900) return;
+    if(document.getElementById("pwaInstallInvite")) return;
+
+    try{
+
+        if(sessionStorage.getItem("edbim-install-invite-dismissed")==="1") return;
+
+    }catch(error){}
+
+    const invite=document.createElement("div");
+    invite.id="pwaInstallInvite";
+    invite.setAttribute("role","dialog");
+    invite.setAttribute("aria-label","Installer ED BIM Studio");
+
+    Object.assign(invite.style,{
+
+        position:"fixed",
+        left:"14px",
+        right:"14px",
+        bottom:"14px",
+        zIndex:"99999",
+        display:"flex",
+        alignItems:"center",
+        gap:"12px",
+        padding:"12px",
+        borderRadius:"20px",
+        background:"rgba(7,17,31,.96)",
+        border:"1px solid rgba(6,150,215,.35)",
+        boxShadow:"0 18px 60px rgba(0,0,0,.38)",
+        backdropFilter:"blur(18px)",
+        WebkitBackdropFilter:"blur(18px)",
+        color:"#ffffff",
+        fontFamily:"Inter,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif",
+        transform:"translateY(140%)",
+        opacity:"0",
+        transition:"transform .45s cubic-bezier(.22,.61,.36,1), opacity .35s ease"
+
+    });
+
+    const icon=document.createElement("img");
+    icon.src="Actifs/icons/icon-192.png";
+    icon.alt="ED BIM Studio";
+
+    Object.assign(icon.style,{
+
+        width:"54px",
+        height:"54px",
+        flex:"0 0 54px",
+        objectFit:"cover",
+        borderRadius:"15px"
+
+    });
+
+    const copy=document.createElement("div");
+    copy.style.flex="1";
+    copy.style.minWidth="0";
+
+    const title=document.createElement("strong");
+    title.textContent="Installer ED BIM Studio";
+
+    Object.assign(title.style,{
+
+        display:"block",
+        marginBottom:"3px",
+        fontSize:"15px",
+        lineHeight:"1.2",
+        fontWeight:"800"
+
+    });
+
+    const text=document.createElement("span");
+    text.textContent="Ajoutez l'appli à votre écran d'accueil.";
+
+    Object.assign(text.style,{
+
+        display:"block",
+        color:"#a9c6d8",
+        fontSize:"12px",
+        lineHeight:"1.35"
+
+    });
+
+    copy.append(title,text);
+
+    const install=document.createElement("button");
+    install.type="button";
+    install.textContent="Installer";
+
+    Object.assign(install.style,{
+
+        border:"0",
+        borderRadius:"14px",
+        padding:"11px 13px",
+        background:"#0696D7",
+        color:"#ffffff",
+        fontSize:"13px",
+        fontWeight:"800",
+        cursor:"pointer",
+        whiteSpace:"nowrap"
+
+    });
+
+    const close=document.createElement("button");
+    close.type="button";
+    close.setAttribute("aria-label","Fermer");
+    close.textContent="×";
+
+    Object.assign(close.style,{
+
+        position:"absolute",
+        top:"5px",
+        right:"7px",
+        width:"26px",
+        height:"26px",
+        border:"0",
+        background:"transparent",
+        color:"#8fa8b8",
+        fontSize:"22px",
+        lineHeight:"22px",
+        cursor:"pointer"
+
+    });
+
+    invite.append(icon,copy,install,close);
+    document.body.appendChild(invite);
+
+    requestAnimationFrame(()=>{
+
+        requestAnimationFrame(()=>{
+
+            invite.style.transform="translateY(0)";
+            invite.style.opacity="1";
+
+        });
+
+    });
+
+    function removeInvite(){
+
+        invite.style.transform="translateY(140%)";
+        invite.style.opacity="0";
+
+        setTimeout(()=>invite.remove(),450);
+
+    }
+
+    close.addEventListener("click",()=>{
+
+        try{
+
+            sessionStorage.setItem("edbim-install-invite-dismissed","1");
+
+        }catch(error){}
+
+        removeInvite();
+
+    });
+
+    install.addEventListener("click",async()=>{
+
+        if(isRunningAsApp()){
+
+            removeInvite();
+            return;
+
+        }
+
+        if(deferredInstallPrompt){
+
+            const promptEvent=deferredInstallPrompt;
+            deferredInstallPrompt=null;
+            promptEvent.prompt();
+
+            try{
+
+                const choice=await promptEvent.userChoice;
+
+                if(choice && choice.outcome==="accepted"){
+
+                    removeInvite();
+
+                }
+
+            }catch(error){}
+
+            return;
+
+        }
+
+        window.alert(installHelpMessage());
+
+    });
+
+    window.addEventListener("appinstalled",removeInvite,{once:true});
+
+}
+
+window.addEventListener("load",()=>{
+
+    setTimeout(createMobileInstallInvite,1600);
+
+});
+
+/*==================================================
  CONSOLE
 ==================================================*/
 
