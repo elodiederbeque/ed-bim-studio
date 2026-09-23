@@ -4,23 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ED BIM Studio | BIM Automation for Revit</title>
-    <meta name="description" content="Portfolio BIM d'Élodie Derbeque : profil en reconversion BIM/Revit, 20 ans en cuisine équipée et agencement, automatisation Revit API C#, structuration de projets et conventions BIM.">
+    <title>Élodie Derbeque | Modeleuse BIM junior — Revit</title>
+    <meta name="description" content="Élodie Derbeque, modeleuse BIM junior : premiers pas dans le dessin et la modélisation sur Revit, formation IFAPME et 20 ans en agencement intérieur. À la recherche d’un poste junior.">
     <meta name="author" content="Élodie Derbeque">
     <link rel="canonical" href="https://elodiederbeque.github.io/ed-bim-studio/">
     <meta property="og:locale" content="fr_BE">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="ED BIM Studio">
-    <meta property="og:title" content="ED BIM Studio | Élodie Derbeque">
-    <meta property="og:description" content="Portfolio BIM professionnel : reconversion BIM/Revit, agencement intérieur, cuisine équipée, automatisation Revit et développement Revit API en C#.">
+    <meta property="og:title" content="Élodie Derbeque | Modeleuse BIM junior">
+    <meta property="og:description" content="Élodie Derbeque, modeleuse BIM junior : premiers pas dans le dessin et la modélisation sur Revit, formation IFAPME et 20 ans en agencement intérieur. À la recherche d’un poste junior.">
     <meta property="og:url" content="https://elodiederbeque.github.io/ed-bim-studio/">
     <meta property="og:image" content="https://elodiederbeque.github.io/ed-bim-studio/Actifs/social-preview.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="ED BIM Studio - Portfolio BIM d'Élodie Derbeque">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ED BIM Studio | Élodie Derbeque">
-    <meta name="twitter:description" content="Portfolio BIM professionnel : reconversion BIM/Revit, agencement intérieur, cuisine équipée, automatisation Revit et développement Revit API en C#.">
+    <meta name="twitter:title" content="Élodie Derbeque | Modeleuse BIM junior">
+    <meta name="twitter:description" content="Élodie Derbeque, modeleuse BIM junior : premiers pas dans le dessin et la modélisation sur Revit, formation IFAPME et 20 ans en agencement intérieur. À la recherche d’un poste junior.">
     <meta name="twitter:image" content="https://elodiederbeque.github.io/ed-bim-studio/Actifs/social-preview.png">
     <meta name="theme-color" content="#07111f">
     <meta name="color-scheme" content="light dark">
@@ -43,6 +43,11 @@
         @media (max-width: 700px) {
             #documents .finderGrid { grid-template-columns: minmax(0, 1fr); }
         }
+        /* Lisibilité des documents et du prototype en mode sombre. */
+        body.dark .finderTop { background:#243449; color:#e2e8f0; }
+        body.dark .finderTop span, body.dark .featurePanel li { color:#e2e8f0; }
+        .heroContent .eyebrow { white-space:normal; }
+        section[id] { scroll-margin-top:110px; }
     </style>
 </head>
 
@@ -61,12 +66,13 @@
             <span>ED BIM Studio</span>
         </a>
         <ul class="menu">
-            <li><a href="#problem">Concept</a></li>
-            <li><a href="#solution">Produit</a></li>
+            <li><a href="#objective">Mon profil</a></li>
+            <li><a href="#problem">Apprentissage</a></li>
+            <li><a href="#solution">Mon TFE</a></li>
             <li><a href="#workflow">Workflow</a></li>
-            <li><a href="#technology">Technologies</a></li>
+            <li><a href="#technology">Outils</a></li>
             <li><a href="#documents">Documents</a></li>
-            <li><a href="#objective">Objectif</a></li>
+
         </ul>
         <a href="#contact" class="navButton">Contact</a>
         <button id="installAppButton" class="installAppButton" type="button" hidden>Installer</button>
@@ -81,21 +87,22 @@
 
 <nav class="mobileQuickNav" aria-label="Acces rapide mobile">
     <a href="#home">Accueil</a>
-    <a href="#solution">Starter</a>
+    <a href="#solution">Mon TFE</a>
     <a href="#workflow">Workflow</a>
     <a href="#documents">Docs</a>
-    <a href="#objective">Objectif</a>
+    <a href="#objective">Mon profil</a>
     <a href="#contact">Contact</a>
 </nav>
 
 <div id="mobileMenu" class="mobileMenu">
     <ul>
-        <li><a href="#problem">Concept</a></li>
-        <li><a href="#solution">Produit</a></li>
+        <li><a href="#objective">Mon profil</a></li>
+        <li><a href="#problem">Apprentissage</a></li>
+        <li><a href="#solution">Mon TFE</a></li>
         <li><a href="#workflow">Workflow</a></li>
-        <li><a href="#technology">Technologies</a></li>
+        <li><a href="#technology">Outils</a></li>
         <li><a href="#documents">Documents</a></li>
-        <li><a href="#objective">Objectif</a></li>
+
         <li><a href="#contact" class="navButton">Contact</a></li>
         <li><button id="installAppMenuButton" class="installAppMenuButton" type="button" hidden>Installer l'appli</button></li>
     </ul>
@@ -125,43 +132,40 @@
 
     <div class="heroGrid">
         <div class="heroContent">
-            <div class="eyebrow">RECONVERSION BIM • CUISINE ÉQUIPÉE • REVIT API</div>
-            <h1>De l'agencement intérieur<br>au BIM Revit.</h1>
+            <div class="eyebrow">ÉLODIE DERBEQUE • À LA RECHERCHE D’UN POSTE JUNIOR</div>
+            <h1>Modeleuse BIM<br>junior — Revit</h1>
             <div class="mobilePortraitCard">
                 <img src="Actifs/Photo.png" alt="Elodie Derbeque">
                 <div>
                     <span>Elodie Derbeque</span>
-                    <strong>BIM / Revit API C#</strong>
+                    <strong>Modeleuse BIM junior</strong>
                 </div>
             </div>
-            <p class="heroLead">
-                20 ans de cuisine équipée, de plans clients et de coordination terrain deviennent
-                une méthode BIM : organiser, cadrer et automatiser les projets Revit.
-            </p>
+            <p class="heroLead">Je débute dans le dessin et la modélisation sur Revit, après une formation BIM à l’IFAPME. Je recherche un poste junior pour apprendre au sein d’une équipe, avec la rigueur acquise en 20 ans d’agencement intérieur.</p>
             <div class="kitchenBridge" aria-label="Passerelle entre cuisine équipée et BIM">
-                <span class="bridgeKicker">Passerelle métier claire</span>
+                <span class="bridgeKicker">Mon parcours</span>
                 <div class="bridgeFlow">
                     <span>Agencement intérieur</span>
-                    <span>Coordination</span>
-                    <span>BIM Revit</span>
+                    <span>Formation BIM</span>
+                    <span>Dessin sur Revit</span>
                 </div>
             </div>
             <div class="heroButtons">
-                <a href="#solution" class="primaryButton">Découvrir ED BIM Starter</a>
-                <a href="Actifs/CV_2026-08-20_Elodie_Derbeque.pdf" class="secondaryButton">Ouvrir le CV</a>
+                <a href="Actifs/CV_2026-09-23_Elodie_Derbeque.pdf" target="_blank" rel="noopener" class="primaryButton">Consulter mon CV</a>
+                <a href="#solution" class="secondaryButton">Mon projet de fin d’études</a>
             </div>
             <div class="heroStats">
                 <div class="stat statExperience"><span>20+ ans</span><small>Agencement<br>Management</small></div>
-                <div class="stat"><span>1</span><small>Plugin développé</small></div>
-                <div class="stat"><span>100%</span><small>Automatisation</small></div>
-                <div class="stat"><span>Revit API</span><small>C#</small></div>
+                <div class="stat"><span>Revit</span><small>Dessin et modélisation<br>Débutante</small></div>
+                <div class="stat"><span>IFAPME</span><small>Formation BIM<br>Attestation de réussite</small></div>
+                <div class="stat"><span>1 TFE</span><small>Projet d’études<br>ED BIM Starter</small></div>
             </div>
         </div>
 
         <div class="heroVisual">
-            <div class="floatingCard top"><span class="cardTitle">Initialisation</span><strong>Projet BIM</strong></div>
-            <div class="floatingCard right"><span class="cardTitle">Convention</span><strong>Méthode projet</strong></div>
-            <div class="floatingCard left"><span class="cardTitle">QA BIM</span><strong>Validation</strong></div>
+            <div class="floatingCard top"><span class="cardTitle">Objectif</span><strong>Poste junior</strong></div>
+            <div class="floatingCard right"><span class="cardTitle">Apprentissage</span><strong>Dessin Revit</strong></div>
+            <div class="floatingCard left"><span class="cardTitle">Parcours</span><strong>Agencement</strong></div>
             <div class="portrait">
                 <img src="Actifs/Photo.png" alt="Elodie Derbeque">
             </div>
@@ -171,17 +175,50 @@
     <div class="scrollIndicator"><span></span></div>
 </section>
 
+<!-- OBJECTIVE -->
+<section id="objective" class="objective">
+    <div class="container objectiveContainer">
+        <div class="sectionHeader">
+            <span class="sectionEyebrow">Objectif professionnel</span>
+            <h2>Débuter dans le dessin BIM, avec une expérience du terrain.</h2>
+            <p>Je recherche un poste de modeleuse BIM junior pour progresser dans le dessin, la modélisation et la production de plans sur Revit. Je souhaite apprendre les méthodes de l’équipe et contribuer aux projets avec un accompagnement adapté à mon niveau.</p>
+        </div>
+
+        <div class="objectiveGrid">
+            <article class="objectiveCard">
+                <span class="objectiveLabel">Positionnement clair</span>
+                <h3>Modeleuse BIM junior — débutante en dessin</h3>
+                <p>Je débute dans le dessin technique sur Revit. Mon objectif est de consolider mes bases, de suivre les consignes du projet et de gagner progressivement en autonomie.</p>
+            </article>
+
+            <article class="objectiveCard">
+                <span class="objectiveLabel">Passerelle métier</span>
+                <h3>Cuisine équipée, agencement et plans</h3>
+                <p>Mon expérience en cuisine équipée m'a habituée à lire un espace, organiser des contraintes, coordonner les intervenants et transformer un besoin client en solution concrète.</p>
+            </article>
+
+            <article class="objectiveCard">
+                <span class="objectiveLabel">Force transférable</span>
+                <h3>Organisation, rigueur et travail en équipe</h3>
+                <p>Mon parcours professionnel m'a donné une vraie culture du suivi, des méthodes, du travail d'équipe et de la résolution de problèmes concrets.</p>
+            </article>
+
+            <article class="objectiveCard">
+                <span class="objectiveLabel">Projet de formation</span>
+                <h3>ED BIM Starter — mon travail de fin d’études</h3>
+                <p>Ce prototype développé pendant ma formation illustre ma curiosité pour Revit et mon envie de comprendre son fonctionnement. Mon objectif professionnel reste de débuter dans la modélisation BIM.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
 <!-- PROBLEM -->
 <section id="problem" class="problem">
     <div class="container problemLayout">
         <div class="problemCopy">
-            <span class="sectionEyebrow">Constat terrain</span>
-            <h2>Avant de modéliser, il faut déjà organiser la maquette.</h2>
-            <p>
-                Dans Revit, les premières heures partent souvent dans la préparation : vues,
-                feuilles, cartouches, conventions de nommage et arborescence. Ce sont des tâches
-                indispensables, mais répétitives.
-            </p>
+            <span class="sectionEyebrow">Apprentissages du TFE</span>
+            <h2>Comprendre comment s’organise un projet Revit.</h2>
+            <p>Dans le cadre de ma formation, j’ai exploré l’organisation des vues, feuilles, cartouches et conventions de nommage. Ces éléments sont au cœur de mon projet de fin d’études, ED BIM Starter, et complètent mon apprentissage du dessin sur Revit.</p>
             <div class="problemFocus" aria-label="Tâches répétitives dans Revit">
                 <span>Vues</span>
                 <span>Feuilles</span>
@@ -234,24 +271,15 @@
     </div>
 </section>
 
-<!-- WHY -->
-<section class="why">
-    <div class="container">
-        <div class="whyLabel">Pourquoi ?</div>
-        <h2 class="whyTitle">Parce que les modeleurs et modeleuses BIM ne devraient jamais perdre leur temps à reconstruire toujours le même projet.</h2>
-        <p class="whyText">
-            Les premières heures d'un projet sont souvent consacrées à préparer la maquette plutôt qu'à produire de la valeur. 
-            ED BIM Starter automatise cette phase afin que les équipes commencent immédiatement avec une structure BIM cohérente.
-        </p>
-    </div>
-</section>
+
 
 <!-- SOLUTION -->
 <section id="solution" class="solution">
     <div class="container">
         <div class="sectionHeader">
-            <span class="sectionEyebrow">ED BIM Starter</span>
-            <h2>Automatiser ce qui ne crée aucune valeur.</h2>
+            <span class="sectionEyebrow">Mon projet de fin d’études · ED BIM Starter</span>
+            <h2>Un projet d’études pour explorer Revit.</h2>
+            <p>ED BIM Starter est un prototype développé en C# pendant ma formation, pour automatiser certaines tâches répétitives de préparation. Les fonctionnalités ci-dessous présentent ce travail d’études.</p>
         </div>
 
         <div class="softwareWindow">
@@ -360,7 +388,7 @@
     <div class="container">
         <div class="sectionHeader center">
             <span class="sectionEyebrow">Workflow</span>
-            <h2>Un projet BIM prêt en quelques instants.</h2>
+            <h2>Le fonctionnement de mon prototype.</h2>
         </div>
         <div class="workflowLine">
             <div class="workflowItem">
@@ -395,8 +423,9 @@
 <section id="technology" class="technology">
     <div class="container">
         <div class="sectionHeader center">
-            <span class="sectionEyebrow">Technologies</span>
-            <h2>Conçu avec les outils du BIM moderne.</h2>
+            <span class="sectionEyebrow">Outils explorés</span>
+            <h2>Les outils de ma formation et de mon TFE.</h2>
+            <p>Je poursuis mon apprentissage de Revit pour le dessin et la modélisation. Les autres outils ci-dessous ont été abordés en formation ou utilisés pour mon prototype ; cette liste ne représente pas un niveau de maîtrise expert.</p>
         </div>
         <div class="techCloud">
             <span class="chip">Autodesk Revit</span>
@@ -408,7 +437,7 @@
             <span class="chip">Git</span>
             <span class="chip">Navisworks</span>
             <span class="chip">IFC</span>
-            <span class="chip">BIM Coordination</span>
+            <span class="chip">Notions de coordination BIM</span>
             <span class="chip">Automation</span>
             <span class="chip">QA BIM</span>
         </div>
@@ -423,7 +452,7 @@
     <div class="container">
         <div class="sectionHeader center">
             <span class="sectionEyebrow">Documentation</span>
-            <h2>Quatre ressources. Une seule vision.</h2>
+            <h2>Mon CV, ma formation et mon projet d’études.</h2>
         </div>
         <div class="finderGrid">
             <!-- CV -->
@@ -435,8 +464,8 @@
                         <span class="fileLabel">PDF</span>
                     </div>
                     <h3>CV</h3>
-                    <p>Mon parcours, mes compétences et ma spécialisation BIM.</p>
-                    <a href="Actifs/CV_2026-08-20_Elodie_Derbeque.pdf" class="finderButton">Ouvrir le PDF</a>
+                    <p>Mon parcours et ma candidature de modeleuse BIM junior.</p>
+                    <a href="Actifs/CV_2026-09-23_Elodie_Derbeque.pdf" class="finderButton">Ouvrir le PDF</a>
                 </div>
             </article>
 
@@ -449,7 +478,7 @@
                         <span class="fileLabel">PDF</span>
                     </div>
                     <h3>TFE</h3>
-                    <p>Recherche et développement d'ED BIM Starter.</p>
+                    <p>Mon travail de fin d’études : le prototype ED BIM Starter.</p>
                     <a href="Actifs/TFE.pdf" class="finderButton">Consulter</a>
                 </div>
             </article>
@@ -470,7 +499,7 @@
                         <span class="fileLabel">PDF</span>
                     </div>
                     <h3>Attestation de réussite</h3>
-                    <p>BIM Coordinateur / IFAPME</p>
+                    <p>Formation suivie : BIM Coordinateur — IFAPME</p>
                     <a href="Attestation_BIM_Coordinator.pdf" target="_blank" rel="noopener noreferrer" class="finderButton">Ouvrir le PDF</a>
                 </div>
             </article>
@@ -491,52 +520,14 @@
     </div>
 </section>
 
-<!-- OBJECTIVE -->
-<section id="objective" class="objective">
-    <div class="container objectiveContainer">
-        <div class="sectionHeader">
-            <span class="sectionEyebrow">Objectif professionnel</span>
-            <h2>Reconversion BIM, culture projet issue de l'agencement.</h2>
-            <p>
-                En reconversion vers le BIM/Revit, je cherche une équipe où progresser vite, modéliser avec rigueur
-                et mettre 20 ans d'agencement, de suivi client et de management au service de projets mieux structurés.
-            </p>
-        </div>
 
-        <div class="objectiveGrid">
-            <article class="objectiveCard">
-                <span class="objectiveLabel">Positionnement clair</span>
-                <h3>Modeleuse BIM en progression</h3>
-                <p>Je vise un poste où apprendre sur des projets réels, produire des maquettes fiables et contribuer progressivement à la structuration des méthodes Revit.</p>
-            </article>
-
-            <article class="objectiveCard">
-                <span class="objectiveLabel">Passerelle métier</span>
-                <h3>Cuisine équipée, agencement et plans</h3>
-                <p>Mon expérience en cuisine équipée m'a habituée à lire un espace, organiser des contraintes, coordonner les intervenants et transformer un besoin client en solution concrète.</p>
-            </article>
-
-            <article class="objectiveCard">
-                <span class="objectiveLabel">Force transférable</span>
-                <h3>Organisation, rigueur et coordination</h3>
-                <p>Mon parcours professionnel m'a donné une vraie culture du suivi, des méthodes, du travail d'équipe et de la résolution de problèmes concrets.</p>
-            </article>
-
-            <article class="objectiveCard">
-                <span class="objectiveLabel">Preuve concrète</span>
-                <h3>ED BIM Starter en Revit API C#</h3>
-                <p>Mon projet de fin d'études montre ma direction : automatiser les tâches répétitives, cadrer les conventions BIM et limiter les erreurs de préparation.</p>
-            </article>
-        </div>
-    </div>
-</section>
 
 <!-- CONTACT -->
 <section id="contact" class="contact">
     <div class="container contactContainer">
         <span class="sectionEyebrow">Contact</span>
-        <h2>Construisons des méthodes BIM adaptées à chaque projet.</h2>
-        <p>Je recherche une opportunité en tant que modeleuse BIM junior, avec une sensibilité forte pour l'agencement intérieur, la coordination, Revit et l'automatisation au service de chaque projet.</p>
+        <h2>Vous accueillez une modeleuse BIM junior ?</h2>
+        <p>Je débute dans le dessin et la modélisation sur Revit. Je souhaite rejoindre une équipe pour apprendre, participer à la production de plans et progresser sur des projets concrets. Échangeons sur un poste junior adapté à mon profil.</p>
         <div class="contactButtons">
             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=elodiederbeque@gmail.com&su=Contact%20suite%20%C3%A0%20votre%20portfolio%20BIM&body=Bonjour%20%C3%89lodie%2C%0D%0A%0D%0AJ%27ai%20consult%C3%A9%20votre%20portfolio%20BIM%20et%20je%20souhaite%20%C3%A9changer%20avec%20vous.%0D%0A%0D%0ABien%20%C3%A0%20vous%2C" target="_blank" rel="noopener" class="primaryButton">Me contacter</a>
             <a href="https://www.linkedin.com/in/elodie-derbeque-32696a396/" target="_blank" rel="noopener" class="secondaryButton">LinkedIn</a>
@@ -550,7 +541,7 @@
             <span class="brandMark footerBrandMark" aria-hidden="true">ED</span>
             <div>
                 <strong>ED BIM Studio</strong>
-                <span>Modeleuse BIM junior · Agencement · Revit API C#</span>
+                <span>Modeleuse BIM junior · Dessin Revit · Agencement</span>
             </div>
         </div>
         <div class="footerCartouche">
