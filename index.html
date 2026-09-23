@@ -37,6 +37,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=20260819-pwa-service-worker">
+    <style>
+        /* Quatre documents : deux colonnes, puis une sur mobile. */
+        #documents .finderGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        @media (max-width: 700px) {
+            #documents .finderGrid { grid-template-columns: minmax(0, 1fr); }
+        }
+    </style>
 </head>
 
 <body class="loading dark">
@@ -416,7 +423,7 @@
     <div class="container">
         <div class="sectionHeader center">
             <span class="sectionEyebrow">Documentation</span>
-            <h2>Trois ressources. Une seule vision.</h2>
+            <h2>Quatre ressources. Une seule vision.</h2>
         </div>
         <div class="finderGrid">
             <!-- CV -->
@@ -447,6 +454,26 @@
                 </div>
             </article>
 
+            <!-- ATTESTATION -->
+            <article class="finderCard">
+                <div class="finderTop"><span>Attestation de réussite</span></div>
+                <div class="finderBody">
+                    <div class="pdfIcon" aria-hidden="true">
+                        <svg class="fileCover" viewBox="0 0 110 140" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="110" height="140" fill="#f0f9ff"/>
+                            <rect x="17" y="18" width="76" height="86" rx="5" fill="white" stroke="#0696d7" stroke-width="2"/>
+                            <path d="M30 35h50M30 45h50M30 55h32" stroke="#94a3b8" stroke-width="3"/>
+                            <path d="M48 79l-5 25 12-7 12 7-5-25" fill="#0696d7"/>
+                            <circle cx="55" cy="76" r="13" fill="#38bdf8" stroke="#0696d7" stroke-width="3"/>
+                            <path d="m49 76 4 4 8-9" fill="none" stroke="white" stroke-width="3"/>
+                        </svg>
+                        <span class="fileLabel">PDF</span>
+                    </div>
+                    <h3>Attestation de réussite</h3>
+                    <p>BIM Coordinateur / IFAPME</p>
+                    <a href="Actifs/Attestation_BIM_Coordinator.pdf" target="_blank" rel="noopener noreferrer" class="finderButton">Ouvrir le PDF</a>
+                </div>
+            </article>
             <!-- PLUGIN -->
             <article class="finderCard">
                 <div class="finderTop"><span>ED BIM Starter</span></div>
